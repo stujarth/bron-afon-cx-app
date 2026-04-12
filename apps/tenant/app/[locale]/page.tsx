@@ -1,5 +1,5 @@
-import { redirect } from '../../i18n/navigation';
+import { redirect } from 'next/navigation';
 
 export default function LocaleRoot() {
-  redirect({ href: '/(dashboard)', locale: 'en' });
+  redirect('/en');
 }
