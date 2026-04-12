@@ -8,6 +8,7 @@ import {
   Globe,
   LogOut,
   Menu,
+  Trophy,
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 
@@ -39,6 +40,7 @@ function Sidebar() {
     { href: '/dashboard', label: t('home'), icon: Home },
     { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
+    { href: '/dashboard/rewards', label: 'Rewards', icon: Trophy },
     { href: '/dashboard/profile', label: t('profile'), icon: User },
     { href: '/dashboard/support', label: t('support'), icon: HelpCircle },
   ];

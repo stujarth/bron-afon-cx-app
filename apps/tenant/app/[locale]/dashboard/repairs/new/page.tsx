@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
-import { ArrowLeft, Camera, Upload } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from '../../../../../i18n/navigation';
+import DiagnosticTool from './diagnostic-tool';
 
 export default function NewRepairPage() {
   const t = useTranslations('repairs.form');
@@ -30,6 +31,20 @@ export default function NewRepairPage() {
 
       <div>
         <h1 className="text-2xl font-bold text-foreground">{t('title')}</h1>
+      </div>
+
+      {/* AI Diagnostic Tool */}
+      <DiagnosticTool />
+
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center" aria-hidden="true">
+          <div className="w-full border-t border-border" />
+        </div>
+        <div className="relative flex justify-center">
+          <span className="bg-background px-3 text-sm text-muted-foreground">
+            or fill in the form below
+          </span>
+        </div>
       </div>
 
       <form className="space-y-6">
@@ -73,32 +88,6 @@ export default function NewRepairPage() {
             placeholder="Please describe the issue in detail..."
             className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
-        </div>
-
-        {/* Photo upload */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-foreground">
-            {t('uploadPhotos')}
-          </label>
-          <p className="mb-3 text-sm text-muted-foreground">{t('uploadDesc')}</p>
-          <div className="flex items-center justify-center rounded-xl border-2 border-dashed border-border p-8 transition-colors hover:border-primary-300 hover:bg-primary-50/50">
-            <div className="text-center">
-              <Camera className="mx-auto h-8 w-8 text-muted-foreground" aria-hidden="true" />
-              <p className="mt-2 text-sm font-medium text-foreground">
-                Take a photo or upload
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                PNG, JPG up to 10MB
-              </p>
-              <button
-                type="button"
-                className="mt-3 inline-flex items-center gap-2 rounded-lg bg-muted px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/80"
-              >
-                <Upload className="h-4 w-4" aria-hidden="true" />
-                Choose files
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Priority */}
