@@ -1,0 +1,11 @@
+{
+  "extends": "@hafan/config-typescript/nextjs.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./app/*"]
+    },
+    "allowJs": true
+  },
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

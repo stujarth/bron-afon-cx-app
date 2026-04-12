@@ -1,0 +1,32 @@
+{
+  "name": "hafan",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:push": "pnpm --filter @hafan/db db:push",
+    "db:studio": "pnpm --filter @hafan/db db:studio"
+  },
+  "devDependencies": {
+    "turbo": "^2.9.6",
+    "prettier": "^3.4.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "esbuild",
+      "sharp",
+      "@parcel/watcher",
+      "unrs-resolver"
+    ]
+  }
+}

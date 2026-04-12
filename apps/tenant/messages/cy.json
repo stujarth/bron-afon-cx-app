@@ -1,0 +1,108 @@
+{
+  "common": {
+    "appName": "Bron Afon",
+    "tagline": "Eich cartref, eich ffordd",
+    "loading": "Yn llwytho...",
+    "error": "Aeth rhywbeth o'i le",
+    "back": "Yn \u00f4l",
+    "save": "Cadw",
+    "cancel": "Canslo",
+    "submit": "Cyflwyno",
+    "search": "Chwilio",
+    "viewAll": "Gweld y cyfan",
+    "signIn": "Mewngofnodi",
+    "signOut": "Allgofnodi",
+    "language": "Iaith",
+    "switchToWelsh": "Cymraeg",
+    "switchToEnglish": "English"
+  },
+  "nav": {
+    "home": "Hafan",
+    "repairs": "Atgyweiriadau",
+    "rent": "Rhent",
+    "profile": "Fy Mhroffil",
+    "support": "Cael Cymorth",
+    "settings": "Gosodiadau"
+  },
+  "dashboard": {
+    "welcome": "Croeso n\u00f4l, {name}",
+    "greeting": "Dyma beth sy'n digwydd gyda'ch cartref",
+    "quickActions": "Camau Cyflym",
+    "reportRepair": "Rhoi Gwybod am Atgyweiriad",
+    "reportRepairDesc": "Dywedwch wrthym beth sydd angen ei drwsio",
+    "payRent": "Talu Rhent",
+    "payRentDesc": "Gweld balans a gwneud taliadau",
+    "getHelp": "Cael Cymorth",
+    "getHelpDesc": "Sgwrsio gyda ni neu ffoniwch ein t\u00eem",
+    "myProfile": "Fy Mhroffil",
+    "myProfileDesc": "Diweddaru eich manylion a'ch dewisiadau",
+    "activeRepairs": "Atgyweiriadau Gweithredol",
+    "rentBalance": "Balans Rhent",
+    "nextPayment": "Taliad Nesaf yn Ddyledus",
+    "messages": "Negeseuon",
+    "points": "Eich Pwyntiau",
+    "level": "Lefel"
+  },
+  "repairs": {
+    "title": "Fy Atgyweiriadau",
+    "reportNew": "Rhoi Gwybod am Atgyweiriad Newydd",
+    "activeRepairs": "Atgyweiriadau Gweithredol",
+    "completedRepairs": "Atgyweiriadau Wedi'u Cwblhau",
+    "trackRepair": "Tracio Atgyweiriad",
+    "status": {
+      "reported": "Wedi'i Adrodd",
+      "triaging": "Yn Cael ei Asesu",
+      "scheduled": "Wedi'i Drefnu",
+      "in_progress": "Ar y Gweill",
+      "completed": "Wedi'i Gwblhau",
+      "cancelled": "Wedi'i Ganslo"
+    },
+    "priority": {
+      "emergency": "Argyfwng",
+      "urgent": "Brys",
+      "routine": "Arferol"
+    },
+    "form": {
+      "title": "Beth sydd angen ei atgyweirio?",
+      "description": "Dywedwch fwy wrthym am y broblem",
+      "category": "Categori",
+      "priority": "Pa mor frys yw hyn?",
+      "uploadPhotos": "Uwchlwytho Lluniau",
+      "uploadDesc": "Ychwanegwch luniau i'n helpu i ddeall y broblem",
+      "submitRepair": "Cyflwyno Cais Atgyweirio"
+    },
+    "tracker": {
+      "title": "Cynnydd yr Atgyweiriad",
+      "estimatedCompletion": "Cwblhau amcangyfrifedig",
+      "assignedTo": "Wedi'i neilltuo i",
+      "reference": "Cyfeirnod"
+    }
+  },
+  "rent": {
+    "title": "Cyfrif Rhent",
+    "currentBalance": "Balans Cyfredol",
+    "weeklyRent": "Rhent Wythnosol",
+    "nextPayment": "Taliad Nesaf yn Ddyledus",
+    "makePayment": "Gwneud Taliad",
+    "paymentHistory": "Hanes Taliadau",
+    "inCredit": "Mewn Credyd",
+    "inArrears": "Mewn \u00d4l-ddyledion"
+  },
+  "profile": {
+    "title": "Fy Mhroffil",
+    "personalDetails": "Manylion Personol",
+    "contactPreferences": "Dewisiadau Cyswllt",
+    "language": "Dewis Iaith",
+    "notifications": "Hysbysiadau",
+    "address": "Fy Nghyfeiriad"
+  },
+  "support": {
+    "title": "Cael Cymorth",
+    "chatbot": "Sgwrsio gyda Hafan AI",
+    "chatbotDesc": "Cael atebion ar unwaith i gwestiynau cyffredin",
+    "callUs": "Ffoniwch Ni",
+    "callUsDesc": "Siaradwch \u00e2'n t\u00eem cyfeillgar",
+    "callNumber": "0800 123 4567",
+    "faq": "Cwestiynau Cyffredin"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "common": {
+    "appName": "Bron Afon",
+    "tagline": "Your home, your way",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "search": "Search",
+    "viewAll": "View all",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "language": "Language",
+    "switchToWelsh": "Cymraeg",
+    "switchToEnglish": "English"
+  },
+  "nav": {
+    "home": "Home",
+    "repairs": "Repairs",
+    "rent": "Rent",
+    "profile": "My Profile",
+    "support": "Get Help",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {name}",
+    "greeting": "Here's what's happening with your home",
+    "quickActions": "Quick Actions",
+    "reportRepair": "Report a Repair",
+    "reportRepairDesc": "Tell us what needs fixing",
+    "payRent": "Pay Rent",
+    "payRentDesc": "View balance and make payments",
+    "getHelp": "Get Help",
+    "getHelpDesc": "Chat with us or call our team",
+    "myProfile": "My Profile",
+    "myProfileDesc": "Update your details and preferences",
+    "activeRepairs": "Active Repairs",
+    "rentBalance": "Rent Balance",
+    "nextPayment": "Next Payment Due",
+    "messages": "Messages",
+    "points": "Your Points",
+    "level": "Level"
+  },
+  "repairs": {
+    "title": "My Repairs",
+    "reportNew": "Report New Repair",
+    "activeRepairs": "Active Repairs",
+    "completedRepairs": "Completed Repairs",
+    "trackRepair": "Track Repair",
+    "status": {
+      "reported": "Reported",
+      "triaging": "Being Assessed",
+      "scheduled": "Scheduled",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "priority": {
+      "emergency": "Emergency",
+      "urgent": "Urgent",
+      "routine": "Routine"
+    },
+    "form": {
+      "title": "What needs repairing?",
+      "description": "Tell us more about the issue",
+      "category": "Category",
+      "priority": "How urgent is this?",
+      "uploadPhotos": "Upload Photos",
+      "uploadDesc": "Add photos to help us understand the issue",
+      "submitRepair": "Submit Repair Request"
+    },
+    "tracker": {
+      "title": "Repair Progress",
+      "estimatedCompletion": "Estimated completion",
+      "assignedTo": "Assigned to",
+      "reference": "Reference"
+    }
+  },
+  "rent": {
+    "title": "Rent Account",
+    "currentBalance": "Current Balance",
+    "weeklyRent": "Weekly Rent",
+    "nextPayment": "Next Payment Due",
+    "makePayment": "Make a Payment",
+    "paymentHistory": "Payment History",
+    "inCredit": "In Credit",
+    "inArrears": "In Arrears"
+  },
+  "profile": {
+    "title": "My Profile",
+    "personalDetails": "Personal Details",
+    "contactPreferences": "Contact Preferences",
+    "language": "Language Preference",
+    "notifications": "Notifications",
+    "address": "My Address"
+  },
+  "support": {
+    "title": "Get Help",
+    "chatbot": "Chat with Hafan AI",
+    "chatbotDesc": "Get instant answers to common questions",
+    "callUs": "Call Us",
+    "callUsDesc": "Speak to our friendly team",
+    "callNumber": "0800 123 4567",
+    "faq": "Frequently Asked Questions"
+  }
+}
