@@ -24,11 +24,11 @@ function GreetingHeader() {
       <div>
         <p className="text-sm text-muted-foreground">
           <span className="font-medium text-primary-700">{greetingCy}</span>
-          <span className="mx-1.5 text-muted-foreground/60">\u00b7</span>
+          <span className="mx-1.5 text-muted-foreground/60">·</span>
           {greetingEn}
         </p>
         <h1 className="mt-1 text-2xl font-bold text-foreground lg:text-3xl">
-          {t('welcome', { name: 'Si\u00e2n' })}
+          {t('welcome', { name: 'Siân' })}
         </h1>
         <p className="mt-1 text-muted-foreground">{t('greeting')}</p>
       </div>
@@ -191,7 +191,7 @@ function RecentActivity() {
   const activities = [
     { type: 'repair', text: 'Repair update — Engineer assigned', time: '2 hours ago', icon: Wrench, color: 'bg-blue-100 text-blue-700' },
     { type: 'points', text: 'You earned 10 points for on-time payment', time: '5 days ago', icon: Star, color: 'bg-amber-100 text-amber-700' },
-    { type: 'rent', text: 'Rent payment of \u00a398.75 received', time: '1 week ago', icon: PoundSterling, color: 'bg-green-100 text-green-700' },
+    { type: 'rent', text: 'Rent payment of £98.75 received', time: '1 week ago', icon: PoundSterling, color: 'bg-green-100 text-green-700' },
   ];
 
   return (
@@ -238,7 +238,7 @@ export default function DashboardPage() {
           />
           <StatCard
             label={t('rentBalance')}
-            value="\u00a3125.50"
+            value="£125.50"
             subtext="In credit"
             icon={PoundSterling}
             iconColor="bg-green-100 text-green-700"
@@ -246,7 +246,7 @@ export default function DashboardPage() {
           <StatCard
             label={t('nextPayment')}
             value="18 Apr"
-            subtext="\u00a398.75"
+            subtext="£98.75"
             icon={Clock}
             iconColor="bg-purple-100 text-purple-700"
           />

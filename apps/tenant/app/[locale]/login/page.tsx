@@ -128,7 +128,7 @@ export default function LoginPage() {
                   <input
                     id="password"
                     type="password"
-                    placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+                    placeholder="••••••••"
                     className="h-11 w-full rounded-lg border border-input bg-background px-3 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function LoginPage() {
           </div>
 
           <p className="mt-6 text-center text-xs text-muted-foreground">
-            Bron Afon Community Housing \u00b7 Powered by{' '}
+            Bron Afon Community Housing · Powered by{' '}
             <span className="font-semibold text-primary-700">Hafan</span>
           </p>
         </div>
