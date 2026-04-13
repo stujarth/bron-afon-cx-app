@@ -12,42 +12,20 @@ import {
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 import { BronAfonLogo, BronAfonLogoCompact } from './bron-afon-logo';
-
-function LanguageSwitcher() {
-  return (
-    <div
-      className="flex items-center gap-0.5 rounded-full bg-muted p-0.5 text-xs font-medium"
-      role="group"
-      aria-label="Language"
-    >
-      <Link
-        href="/"
-        locale="en"
-        className="rounded-full px-3 py-1 text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
-      >
-        English
-      </Link>
-      <Link
-        href="/"
-        locale="cy"
-        className="rounded-full px-3 py-1 text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
-      >
-        Cymraeg
-      </Link>
-    </div>
-  );
-}
+import { LanguageSwitcher } from './language-switcher';
+import FloatingChat from './floating-chat';
 
 function Sidebar() {
   const t = useTranslations('nav');
+  const tCommon = useTranslations('common');
 
   const navItems = [
-    { href: '/dashboard', label: t('home'), labelCy: 'Hafan', icon: Home },
-    { href: '/dashboard/repairs', label: t('repairs'), labelCy: 'Atgyweiriadau', icon: Wrench },
-    { href: '/dashboard/rent', label: t('rent'), labelCy: 'Rhent', icon: PoundSterling },
-    { href: '/dashboard/rewards', label: 'Rewards', labelCy: 'Gwobrau', icon: Trophy },
-    { href: '/dashboard/profile', label: t('profile'), labelCy: 'Proffil', icon: User },
-    { href: '/dashboard/support', label: t('support'), labelCy: 'Cymorth', icon: HelpCircle },
+    { href: '/dashboard', label: t('home'), icon: Home },
+    { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
+    { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
+    { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
+    { href: '/dashboard/profile', label: t('profile'), icon: User },
+    { href: '/dashboard/support', label: t('support'), icon: HelpCircle },
   ];
 
   return (
@@ -74,10 +52,9 @@ function Sidebar() {
           ))}
         </ul>
 
-        {/* Welsh greeting */}
         <div className="mt-8 rounded-xl border border-primary-100 bg-gradient-to-br from-primary-50 to-primary-100/50 p-4">
-          <p className="text-xs font-medium text-primary-700">Croeso i Bron Afon</p>
-          <p className="mt-0.5 text-xs text-primary-600/80">Your home, your way</p>
+          <p className="text-xs font-medium text-primary-700">{tCommon('welcomeMessage')}</p>
+          <p className="mt-0.5 text-xs text-primary-600/80">{tCommon('yourHome')}</p>
         </div>
       </nav>
 
@@ -87,9 +64,7 @@ function Sidebar() {
             SW
           </div>
           <div className="flex-1 truncate">
-            <p className="truncate text-sm font-semibold text-sidebar-foreground">
-              Si&acirc;n Williams
-            </p>
+            <p className="truncate text-sm font-semibold text-sidebar-foreground">Siân Williams</p>
             <p className="truncate text-xs text-muted-foreground">14 Heol y Castell</p>
           </div>
         </div>
@@ -105,8 +80,8 @@ function MobileBottomNav() {
     { href: '/dashboard', label: t('home'), icon: Home },
     { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
-    { href: '/dashboard/rewards', label: 'Rewards', icon: Trophy },
-    { href: '/dashboard/support', label: t('support'), icon: HelpCircle },
+    { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
+    { href: '/dashboard/profile', label: t('profile'), icon: User },
   ];
 
   return (
@@ -140,7 +115,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       <div className="flex flex-1 flex-col">
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-background/95 px-4 backdrop-blur-md lg:px-8">
-          {/* Mobile header with logo */}
           <div className="flex items-center gap-3 lg:hidden">
             <button
               className="rounded-lg p-2 text-muted-foreground hover:bg-muted"
@@ -157,7 +131,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <LanguageSwitcher />
             <button
               className="relative rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              aria-label="Notifications"
+              aria-label={t('notifications')}
             >
               <Bell className="h-5 w-5" />
               <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-secondary-500 ring-2 ring-background" />
@@ -178,6 +152,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </div>
 
       <MobileBottomNav />
+      <FloatingChat />
     </div>
   );
 }
