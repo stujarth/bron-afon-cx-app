@@ -4,7 +4,7 @@
     "tagline": "Eich cartref, eich ffordd",
     "loading": "Yn llwytho...",
     "error": "Aeth rhywbeth o'i le",
-    "back": "Yn \u00f4l",
+    "back": "Yn ôl",
     "save": "Cadw",
     "cancel": "Canslo",
     "submit": "Cyflwyno",
@@ -13,19 +13,26 @@
     "signIn": "Mewngofnodi",
     "signOut": "Allgofnodi",
     "language": "Iaith",
-    "switchToWelsh": "Cymraeg",
-    "switchToEnglish": "English"
+    "morning": "Bore da",
+    "afternoon": "Prynhawn da",
+    "evening": "Noswaith dda",
+    "edit": "Golygu",
+    "notifications": "Hysbysiadau",
+    "welcomeMessage": "Croeso i Bron Afon",
+    "yourHome": "Eich cartref, eich ffordd",
+    "communityHousing": "Tai Cymunedol"
   },
   "nav": {
     "home": "Hafan",
     "repairs": "Atgyweiriadau",
     "rent": "Rhent",
     "profile": "Fy Mhroffil",
-    "support": "Cael Cymorth",
-    "settings": "Gosodiadau"
+    "support": "Cymorth",
+    "settings": "Gosodiadau",
+    "rewards": "Gwobrau"
   },
   "dashboard": {
-    "welcome": "Croeso n\u00f4l, {name}",
+    "welcome": "Croeso yn ôl, {name}",
     "greeting": "Dyma beth sy'n digwydd gyda'ch cartref",
     "quickActions": "Camau Cyflym",
     "reportRepair": "Rhoi Gwybod am Atgyweiriad",
@@ -33,15 +40,45 @@
     "payRent": "Talu Rhent",
     "payRentDesc": "Gweld balans a gwneud taliadau",
     "getHelp": "Cael Cymorth",
-    "getHelpDesc": "Sgwrsio gyda ni neu ffoniwch ein t\u00eem",
+    "getHelpDesc": "Sgwrsio gyda ni neu ffoniwch ein tîm",
     "myProfile": "Fy Mhroffil",
     "myProfileDesc": "Diweddaru eich manylion a'ch dewisiadau",
     "activeRepairs": "Atgyweiriadau Gweithredol",
     "rentBalance": "Balans Rhent",
-    "nextPayment": "Taliad Nesaf yn Ddyledus",
+    "nextPayment": "Taliad Nesaf",
     "messages": "Negeseuon",
-    "points": "Eich Pwyntiau",
-    "level": "Lefel"
+    "points": "Pwyntiau",
+    "level": "Lefel",
+    "inCredit": "Mewn credyd",
+    "inProgress": "Ar y gweill",
+    "unread": "heb ei ddarllen",
+    "recentActivity": "Gweithgaredd Diweddar",
+    "stepOf": "Cam {current} o {total}",
+    "etaToday": "Cyrraedd: {time} heddiw",
+    "onTheWay": "Ar y ffordd",
+    "viewDetails": "Gweld y manylion"
+  },
+  "rewards": {
+    "title": "Gwobrau a Chyflawniadau",
+    "points": "pwy",
+    "currentLevel": "Lefel Bresennol",
+    "pointsToNext": "{points} pwynt i {level}",
+    "weekStreak": "wythnos yn olynol",
+    "badges": "Bathodynnau",
+    "thisMonth": "Y mis hwn",
+    "pointsHistory": "Hanes Pwyntiau",
+    "howToEarn": "Sut i Ennill Pwyntiau",
+    "levelBronze": "Efydd",
+    "levelSilver": "Arian",
+    "levelGold": "Aur",
+    "levelPlatinum": "Platinwm",
+    "levelDiamond": "Diemwnt",
+    "earnPayOnTime": "Talu rhent ar amser",
+    "earnReportRepair": "Rhoi gwybod am atgyweiriad ar-lein",
+    "earnCompleteSurvey": "Cwblhau arolwg",
+    "earnUseAi": "Defnyddio offer AI",
+    "earnUpdateProfile": "Diweddaru eich proffil",
+    "earnRefer": "Cyfeirio cymydog"
   },
   "repairs": {
     "title": "Fy Atgyweiriadau",
@@ -49,10 +86,13 @@
     "activeRepairs": "Atgyweiriadau Gweithredol",
     "completedRepairs": "Atgyweiriadau Wedi'u Cwblhau",
     "trackRepair": "Tracio Atgyweiriad",
+    "none": "Dim atgyweiriadau wedi'u cwblhau eto",
     "status": {
       "reported": "Wedi'i Adrodd",
       "triaging": "Yn Cael ei Asesu",
+      "assessed": "Wedi'i Asesu",
       "scheduled": "Wedi'i Drefnu",
+      "onTheWay": "Ar y Ffordd",
       "in_progress": "Ar y Gweill",
       "completed": "Wedi'i Gwblhau",
       "cancelled": "Wedi'i Ganslo"
@@ -69,13 +109,41 @@
       "priority": "Pa mor frys yw hyn?",
       "uploadPhotos": "Uwchlwytho Lluniau",
       "uploadDesc": "Ychwanegwch luniau i'n helpu i ddeall y broblem",
-      "submitRepair": "Cyflwyno Cais Atgyweirio"
+      "submitRepair": "Cyflwyno Cais Atgyweirio",
+      "titlePlaceholder": "e.e. Tap yn gollwng yn y gegin",
+      "descriptionPlaceholder": "Disgrifiwch y broblem yn fanwl...",
+      "chooseFiles": "Dewis ffeiliau",
+      "orFillIn": "neu llenwch y ffurflen isod"
     },
     "tracker": {
       "title": "Cynnydd yr Atgyweiriad",
       "estimatedCompletion": "Cwblhau amcangyfrifedig",
       "assignedTo": "Wedi'i neilltuo i",
-      "reference": "Cyfeirnod"
+      "reference": "Cyfeirnod",
+      "callEngineer": "Ffonio'r Peiriannydd",
+      "message": "Neges",
+      "timeline": "Llinell Amser",
+      "details": "Manylion yr Atgyweiriad",
+      "engineerOnWay": "Peiriannydd ar y ffordd!",
+      "untilArrival": "tan y cyrhaeddiad",
+      "live": "Byw"
+    },
+    "categories": {
+      "plumbing": "Plymio",
+      "electrical": "Trydan",
+      "heating": "Gwresogi",
+      "windowsDoors": "Ffenestri a Drysau",
+      "dampMould": "Lleithder a Llwydni",
+      "roofGutters": "To a Gwteri",
+      "kitchen": "Cegin",
+      "bathroom": "Ystafell Ymolchi",
+      "garden": "Gardd / Allanol",
+      "other": "Arall"
+    },
+    "priorityDesc": {
+      "routine": "Gall aros ychydig ddyddiau",
+      "urgent": "Mae angen sylw yn fuan",
+      "emergency": "Risg ar unwaith i ddiogelwch"
     }
   },
   "rent": {
@@ -86,7 +154,8 @@
     "makePayment": "Gwneud Taliad",
     "paymentHistory": "Hanes Taliadau",
     "inCredit": "Mewn Credyd",
-    "inArrears": "Mewn \u00d4l-ddyledion"
+    "inArrears": "Mewn Ôl-ddyledion",
+    "paid": "Wedi talu"
   },
   "profile": {
     "title": "Fy Mhroffil",
@@ -94,15 +163,43 @@
     "contactPreferences": "Dewisiadau Cyswllt",
     "language": "Dewis Iaith",
     "notifications": "Hysbysiadau",
-    "address": "Fy Nghyfeiriad"
+    "address": "Fy Nghyfeiriad",
+    "tenantSince": "Tenant ers {year}",
+    "name": "Enw",
+    "email": "E-bost",
+    "phone": "Rhif Ffôn",
+    "emailNotifications": "Hysbysiadau e-bost",
+    "smsNotifications": "Hysbysiadau SMS",
+    "pushNotifications": "Hysbysiadau gwthio"
   },
   "support": {
     "title": "Cael Cymorth",
     "chatbot": "Sgwrsio gyda Hafan AI",
     "chatbotDesc": "Cael atebion ar unwaith i gwestiynau cyffredin",
     "callUs": "Ffoniwch Ni",
-    "callUsDesc": "Siaradwch \u00e2'n t\u00eem cyfeillgar",
+    "callUsDesc": "Siaradwch â'n tîm cyfeillgar",
     "callNumber": "0800 123 4567",
-    "faq": "Cwestiynau Cyffredin"
+    "faq": "Cwestiynau Cyffredin",
+    "online": "Ar-lein — wedi'i bweru gan AI",
+    "typing": "Teipio...",
+    "typeMessage": "Teipiwch eich neges...",
+    "openHours": "Llun-Gwe, 8am-6pm",
+    "startChat": "Dechrau sgwrs"
+  },
+  "diagnostic": {
+    "title": "Offer Diagnostig AI",
+    "description": "Uwchlwythwch lun a bydd ein AI yn ceisio adnabod y broblem, awgrymu atebion cyflym, ac argymell y gweithiwr cywir.",
+    "uploadPrompt": "Tynnu llun neu uwchlwytho delwedd",
+    "uploadHint": "PNG, JPG hyd at 10MB — bydd ein AI yn ei ddadansoddi",
+    "analyseButton": "Dadansoddi gydag AI",
+    "scanning": "Sganio'r ddelwedd...",
+    "identifying": "Adnabod math y broblem...",
+    "assessing": "Asesu difrifoldeb...",
+    "generating": "Cynhyrchu argymhellion...",
+    "issueIdentified": "Problem wedi'i Hadnabod",
+    "confidence": "{percent}% hyder",
+    "quickFixes": "Rhowch gynnig ar y rhain yn gyntaf",
+    "stillNeedHelp": "Dal angen cymorth?",
+    "bookEngineer": "Archebu {trade}"
   }
 }

@@ -1,10 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   Wrench,
   PoundSterling,
   HelpCircle,
   User,
-  Star,
   Trophy,
   ArrowRight,
   Sparkles,
@@ -15,17 +14,25 @@ import { Link } from '../../../i18n/navigation';
 
 function GreetingHeader() {
   const t = useTranslations('dashboard');
+  const tCommon = useTranslations('common');
   const hour = new Date().getHours();
-  const greetingEn = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-  const greetingCy = hour < 12 ? 'Bore da' : hour < 18 ? 'Prynhawn da' : 'Noswaith dda';
+  const greetingKey = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
+  const locale = useLocale();
+
+  // Show the "other" language greeting too, as a subtle bilingual touch
+  const greetings = {
+    en: { morning: 'Bore da', afternoon: 'Prynhawn da', evening: 'Noswaith dda' },
+    cy: { morning: 'Good morning', afternoon: 'Good afternoon', evening: 'Good evening' },
+  };
+  const other = greetings[locale === 'cy' ? 'cy' : 'en'][greetingKey];
 
   return (
     <div className="flex items-start justify-between">
       <div>
         <p className="text-sm text-muted-foreground">
-          <span className="font-medium text-primary-700">{greetingCy}</span>
+          <span className="font-medium text-primary-700">{tCommon(greetingKey)}</span>
           <span className="mx-1.5 text-muted-foreground/60">·</span>
-          {greetingEn}
+          <span>{other}</span>
         </p>
         <h1 className="mt-1 text-2xl font-bold text-foreground lg:text-3xl">
           {t('welcome', { name: 'Siân' })}
@@ -38,6 +45,8 @@ function GreetingHeader() {
 
 function GamificationBanner() {
   const t = useTranslations('dashboard');
+  const tRewards = useTranslations('rewards');
+
   return (
     <Link
       href="/dashboard/rewards"
@@ -52,9 +61,9 @@ function GamificationBanner() {
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-foreground">450 pts</span>
+            <span className="text-lg font-bold text-foreground">450 {tRewards('points')}</span>
             <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">
-              Gold Member
+              {tRewards('levelGold')}
             </span>
           </div>
           <div className="mt-2 h-2 w-full rounded-full bg-white/60">
@@ -65,14 +74,15 @@ function GamificationBanner() {
               aria-valuenow={75}
               aria-valuemin={0}
               aria-valuemax={100}
-              aria-label="Progress to Platinum"
             />
           </div>
           <div className="mt-1.5 flex items-center justify-between">
-            <p className="text-xs text-muted-foreground">50 points to Platinum</p>
+            <p className="text-xs text-muted-foreground">
+              {tRewards('pointsToNext', { points: 50, level: tRewards('levelPlatinum') })}
+            </p>
             <span className="inline-flex items-center gap-1 text-xs font-medium text-orange-700">
               <Sparkles className="h-3 w-3" />
-              16 week streak
+              16 {tRewards('weekStreak')}
             </span>
           </div>
         </div>
@@ -83,6 +93,11 @@ function GamificationBanner() {
 }
 
 function ActiveRepairCard() {
+  const t = useTranslations('dashboard');
+  const tRepairs = useTranslations('repairs.tracker');
+  const locale = useLocale();
+  const repairTitle = locale === 'cy' ? 'Tap yn gollwng yn y gegin' : 'Leaking tap in kitchen';
+
   return (
     <Link
       href="/dashboard/repairs/repair-1"
@@ -94,31 +109,28 @@ function ActiveRepairCard() {
             <Wrench className="h-5 w-5 text-primary-700" />
           </div>
           <div>
-            <p className="text-sm font-semibold text-foreground">Leaking tap in kitchen</p>
+            <p className="text-sm font-semibold text-foreground">{repairTitle}</p>
             <p className="text-xs text-muted-foreground">REP-2026-0412</p>
           </div>
         </div>
         <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700">
           <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-          On the way
+          {t('onTheWay')}
         </span>
       </div>
 
-      {/* Mini progress */}
       <div className="mt-4">
         <div className="flex items-center gap-1">
           {[1, 2, 3, 4, 5].map((step) => (
             <div
               key={step}
-              className={`h-1.5 flex-1 rounded-full ${
-                step <= 4 ? 'bg-primary-500' : 'bg-white'
-              }`}
+              className={`h-1.5 flex-1 rounded-full ${step <= 4 ? 'bg-primary-500' : 'bg-white'}`}
             />
           ))}
         </div>
         <div className="mt-2 flex items-center justify-between text-xs">
-          <span className="text-muted-foreground">Step 4 of 5</span>
-          <span className="font-medium text-primary-700">ETA: 2:00 PM today</span>
+          <span className="text-muted-foreground">{t('stepOf', { current: 4, total: 5 })}</span>
+          <span className="font-medium text-primary-700">{t('etaToday', { time: '2:00 PM' })}</span>
         </div>
       </div>
     </Link>
@@ -174,9 +186,7 @@ function QuickActionCard({
         <Icon className="h-5 w-5" aria-hidden="true" />
       </div>
       <div className="flex-1">
-        <h3 className="font-semibold text-card-foreground group-hover:text-primary-700">
-          {title}
-        </h3>
+        <h3 className="font-semibold text-card-foreground group-hover:text-primary-700">{title}</h3>
         <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>
       </div>
       <ArrowRight
@@ -188,16 +198,25 @@ function QuickActionCard({
 }
 
 function RecentActivity() {
-  const activities = [
-    { type: 'repair', text: 'Repair update — Engineer assigned', time: '2 hours ago', icon: Wrench, color: 'bg-blue-100 text-blue-700' },
-    { type: 'points', text: 'You earned 10 points for on-time payment', time: '5 days ago', icon: Star, color: 'bg-amber-100 text-amber-700' },
-    { type: 'rent', text: 'Rent payment of £98.75 received', time: '1 week ago', icon: PoundSterling, color: 'bg-green-100 text-green-700' },
-  ];
+  const t = useTranslations('dashboard');
+  const locale = useLocale();
+
+  const activities = locale === 'cy'
+    ? [
+        { text: 'Diweddariad atgyweiriad — Peiriannydd wedi\'i neilltuo', time: '2 awr yn ôl', icon: Wrench, color: 'bg-blue-100 text-blue-700' },
+        { text: 'Enilloch 10 pwynt am daliad ar amser', time: '5 diwrnod yn ôl', icon: Trophy, color: 'bg-amber-100 text-amber-700' },
+        { text: 'Derbyniwyd taliad rhent o £98.75', time: 'Wythnos yn ôl', icon: PoundSterling, color: 'bg-green-100 text-green-700' },
+      ]
+    : [
+        { text: 'Repair update — Engineer assigned', time: '2 hours ago', icon: Wrench, color: 'bg-blue-100 text-blue-700' },
+        { text: 'You earned 10 points for on-time payment', time: '5 days ago', icon: Trophy, color: 'bg-amber-100 text-amber-700' },
+        { text: 'Rent payment of £98.75 received', time: '1 week ago', icon: PoundSterling, color: 'bg-green-100 text-green-700' },
+      ];
 
   return (
     <section>
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-foreground">Recent Activity</h2>
+        <h2 className="text-sm font-semibold text-foreground">{t('recentActivity')}</h2>
       </div>
       <div className="rounded-xl border border-border bg-card">
         <ul className="divide-y divide-border" role="list">
@@ -232,14 +251,14 @@ export default function DashboardPage() {
           <StatCard
             label={t('activeRepairs')}
             value="2"
-            subtext="1 in progress"
+            subtext={`1 ${t('inProgress')}`}
             icon={Wrench}
             iconColor="bg-blue-100 text-blue-700"
           />
           <StatCard
             label={t('rentBalance')}
             value="£125.50"
-            subtext="In credit"
+            subtext={t('inCredit')}
             icon={PoundSterling}
             iconColor="bg-green-100 text-green-700"
           />
@@ -253,7 +272,7 @@ export default function DashboardPage() {
           <StatCard
             label={t('messages')}
             value="3"
-            subtext="1 unread"
+            subtext={`1 ${t('unread')}`}
             icon={Bell}
             iconColor="bg-amber-100 text-amber-700"
           />

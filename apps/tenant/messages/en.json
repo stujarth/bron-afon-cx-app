@@ -13,16 +13,23 @@
     "signIn": "Sign in",
     "signOut": "Sign out",
     "language": "Language",
-    "switchToWelsh": "Cymraeg",
-    "switchToEnglish": "English"
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening",
+    "edit": "Edit",
+    "notifications": "Notifications",
+    "welcomeMessage": "Welcome to Bron Afon",
+    "yourHome": "Your home, your way",
+    "communityHousing": "Community Housing"
   },
   "nav": {
     "home": "Home",
     "repairs": "Repairs",
     "rent": "Rent",
     "profile": "My Profile",
-    "support": "Get Help",
-    "settings": "Settings"
+    "support": "Support",
+    "settings": "Settings",
+    "rewards": "Rewards"
   },
   "dashboard": {
     "welcome": "Welcome back, {name}",
@@ -38,10 +45,40 @@
     "myProfileDesc": "Update your details and preferences",
     "activeRepairs": "Active Repairs",
     "rentBalance": "Rent Balance",
-    "nextPayment": "Next Payment Due",
+    "nextPayment": "Next Payment",
     "messages": "Messages",
-    "points": "Your Points",
-    "level": "Level"
+    "points": "Points",
+    "level": "Level",
+    "inCredit": "In credit",
+    "inProgress": "in progress",
+    "unread": "unread",
+    "recentActivity": "Recent Activity",
+    "stepOf": "Step {current} of {total}",
+    "etaToday": "ETA: {time} today",
+    "onTheWay": "On the way",
+    "viewDetails": "View details"
+  },
+  "rewards": {
+    "title": "Rewards & Achievements",
+    "points": "pts",
+    "currentLevel": "Current Level",
+    "pointsToNext": "{points} points to {level}",
+    "weekStreak": "week streak",
+    "badges": "Badges",
+    "thisMonth": "This month",
+    "pointsHistory": "Points History",
+    "howToEarn": "How to Earn Points",
+    "levelBronze": "Bronze",
+    "levelSilver": "Silver",
+    "levelGold": "Gold",
+    "levelPlatinum": "Platinum",
+    "levelDiamond": "Diamond",
+    "earnPayOnTime": "Pay rent on time",
+    "earnReportRepair": "Report repair online",
+    "earnCompleteSurvey": "Complete a survey",
+    "earnUseAi": "Use AI diagnostic",
+    "earnUpdateProfile": "Update your profile",
+    "earnRefer": "Refer a neighbour"
   },
   "repairs": {
     "title": "My Repairs",
@@ -49,10 +86,13 @@
     "activeRepairs": "Active Repairs",
     "completedRepairs": "Completed Repairs",
     "trackRepair": "Track Repair",
+    "none": "No completed repairs yet",
     "status": {
       "reported": "Reported",
       "triaging": "Being Assessed",
+      "assessed": "Assessed",
       "scheduled": "Scheduled",
+      "onTheWay": "On the Way",
       "in_progress": "In Progress",
       "completed": "Completed",
       "cancelled": "Cancelled"
@@ -69,13 +109,41 @@
       "priority": "How urgent is this?",
       "uploadPhotos": "Upload Photos",
       "uploadDesc": "Add photos to help us understand the issue",
-      "submitRepair": "Submit Repair Request"
+      "submitRepair": "Submit Repair Request",
+      "titlePlaceholder": "e.g. Leaking tap in kitchen",
+      "descriptionPlaceholder": "Please describe the issue in detail...",
+      "chooseFiles": "Choose files",
+      "orFillIn": "or fill in the form below"
     },
     "tracker": {
       "title": "Repair Progress",
       "estimatedCompletion": "Estimated completion",
       "assignedTo": "Assigned to",
-      "reference": "Reference"
+      "reference": "Reference",
+      "callEngineer": "Call Engineer",
+      "message": "Message",
+      "timeline": "Timeline",
+      "details": "Repair Details",
+      "engineerOnWay": "Engineer on the way!",
+      "untilArrival": "until arrival",
+      "live": "Live"
+    },
+    "categories": {
+      "plumbing": "Plumbing",
+      "electrical": "Electrical",
+      "heating": "Heating",
+      "windowsDoors": "Windows & Doors",
+      "dampMould": "Damp & Mould",
+      "roofGutters": "Roof & Gutters",
+      "kitchen": "Kitchen",
+      "bathroom": "Bathroom",
+      "garden": "Garden & External",
+      "other": "Other"
+    },
+    "priorityDesc": {
+      "routine": "Can wait a few days",
+      "urgent": "Needs attention soon",
+      "emergency": "Immediate risk to safety"
     }
   },
   "rent": {
@@ -86,7 +154,8 @@
     "makePayment": "Make a Payment",
     "paymentHistory": "Payment History",
     "inCredit": "In Credit",
-    "inArrears": "In Arrears"
+    "inArrears": "In Arrears",
+    "paid": "Paid"
   },
   "profile": {
     "title": "My Profile",
@@ -94,7 +163,14 @@
     "contactPreferences": "Contact Preferences",
     "language": "Language Preference",
     "notifications": "Notifications",
-    "address": "My Address"
+    "address": "My Address",
+    "tenantSince": "Tenant since {year}",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "emailNotifications": "Email notifications",
+    "smsNotifications": "SMS notifications",
+    "pushNotifications": "Push notifications"
   },
   "support": {
     "title": "Get Help",
@@ -103,6 +179,27 @@
     "callUs": "Call Us",
     "callUsDesc": "Speak to our friendly team",
     "callNumber": "0800 123 4567",
-    "faq": "Frequently Asked Questions"
+    "faq": "Frequently Asked Questions",
+    "online": "Online — powered by AI",
+    "typing": "Typing...",
+    "typeMessage": "Type your message...",
+    "openHours": "Mon-Fri, 8am-6pm",
+    "startChat": "Start chat"
+  },
+  "diagnostic": {
+    "title": "AI Diagnostic Tool",
+    "description": "Upload a photo and our AI will try to identify the issue, suggest quick fixes, and recommend the right trade.",
+    "uploadPrompt": "Take a photo or upload an image",
+    "uploadHint": "PNG, JPG up to 10MB — our AI will analyse it",
+    "analyseButton": "Analyse with AI",
+    "scanning": "Scanning image...",
+    "identifying": "Identifying issue type...",
+    "assessing": "Assessing severity...",
+    "generating": "Generating recommendations...",
+    "issueIdentified": "Issue Identified",
+    "confidence": "{percent}% confidence",
+    "quickFixes": "Try these quick fixes first",
+    "stillNeedHelp": "Still need help?",
+    "bookEngineer": "Book a {trade}"
   }
 }
