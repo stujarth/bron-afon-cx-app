@@ -9,37 +9,29 @@ import {
   ArrowRight,
   Sparkles,
   Clock,
-  CheckCircle2,
   Bell,
-  Sun,
-  Cloud,
-  CloudRain,
-  TrendingUp,
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 
 function GreetingHeader() {
   const t = useTranslations('dashboard');
   const hour = new Date().getHours();
-  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-  const Weather = hour < 6 || hour >= 20 ? Cloud : hour < 12 ? Sun : hour < 18 ? Sun : Cloud;
+  const greetingEn = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+  const greetingCy = hour < 12 ? 'Bore da' : hour < 18 ? 'Prynhawn da' : 'Noswaith dda';
 
   return (
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-sm text-muted-foreground">{greeting}</p>
+        <p className="text-sm text-muted-foreground">
+          <span className="font-medium text-primary-700">{greetingCy}</span>
+          <span className="mx-1.5 text-muted-foreground/60">\u00b7</span>
+          {greetingEn}
+        </p>
         <h1 className="mt-1 text-2xl font-bold text-foreground lg:text-3xl">
           {t('welcome', { name: 'Si\u00e2n' })}
         </h1>
         <p className="mt-1 text-muted-foreground">{t('greeting')}</p>
       </div>
-      <button
-        className="relative rounded-full bg-muted p-2 text-muted-foreground transition-colors hover:bg-muted/80"
-        aria-label="Notifications"
-      >
-        <Bell className="h-5 w-5" />
-        <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-background" />
-      </button>
     </div>
   );
 }
