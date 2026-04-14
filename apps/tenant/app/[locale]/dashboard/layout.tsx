@@ -9,11 +9,14 @@ import {
   Menu,
   Trophy,
   Bell,
+  Inbox,
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 import { BronAfonLogo, BronAfonLogoCompact } from './bron-afon-logo';
 import { LanguageSwitcher } from './language-switcher';
 import FloatingChat from './floating-chat';
+import NotificationBell from './notification-bell';
+import AccessibilityToolbar from './accessibility-toolbar';
 
 function Sidebar() {
   const t = useTranslations('nav');
@@ -23,6 +26,7 @@ function Sidebar() {
     { href: '/dashboard', label: t('home'), icon: Home },
     { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
+    { href: '/dashboard/inbox', label: 'Inbox', icon: Inbox },
     { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
     { href: '/dashboard/profile', label: t('profile'), icon: User },
     { href: '/dashboard/support', label: t('support'), icon: HelpCircle },
@@ -129,13 +133,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            <button
-              className="relative rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              aria-label={t('notifications')}
-            >
-              <Bell className="h-5 w-5" />
-              <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-secondary-500 ring-2 ring-background" />
-            </button>
+            <div className="relative">
+              <AccessibilityToolbar />
+            </div>
+            <NotificationBell />
             <button
               className="hidden items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:flex"
               aria-label={t('signOut')}

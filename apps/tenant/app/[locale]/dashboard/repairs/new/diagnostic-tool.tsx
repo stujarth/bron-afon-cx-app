@@ -67,7 +67,7 @@ export default function DiagnosticTool() {
     setResult(null);
 
     const steps = [
-      'Scanning image...',
+      'Analysing video frames...',
       'Identifying issue type...',
       'Assessing severity...',
       'Generating recommendations...',
@@ -91,7 +91,7 @@ export default function DiagnosticTool() {
           <div>
             <p className="text-sm font-semibold text-primary-800">AI Diagnostic Tool</p>
             <p className="mt-0.5 text-xs text-primary-600">
-              Upload a photo and our AI will try to identify the issue, suggest quick fixes,
+              Upload a photo or video and our AI will try to identify the issue, suggest quick fixes,
               and recommend the right trade — before we send someone out.
             </p>
           </div>
@@ -108,10 +108,10 @@ export default function DiagnosticTool() {
             <Camera className="h-7 w-7 text-primary-600" />
           </div>
           <p className="mt-3 text-sm font-semibold text-foreground">
-            Take a photo or upload an image
+            Take a photo, record a video, or upload
           </p>
           <p className="mt-1 text-xs text-muted-foreground">
-            PNG, JPG up to 10MB — our AI will analyse it
+            PNG, JPG, MP4, MOV — up to 50MB
           </p>
           <span className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white">
             <Upload className="h-4 w-4" />
@@ -127,8 +127,8 @@ export default function DiagnosticTool() {
                 <Camera className="h-8 w-8 text-blue-600" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-card-foreground">kitchen-tap-issue.jpg</p>
-                <p className="text-xs text-muted-foreground">2.4 MB — uploaded just now</p>
+                <p className="text-sm font-medium text-card-foreground">kitchen-tap-issue.mp4</p>
+                <p className="text-xs text-muted-foreground">8.2 MB video — uploaded just now</p>
               </div>
               <button
                 onClick={() => { setUploadedImage(null); setResult(null); }}
