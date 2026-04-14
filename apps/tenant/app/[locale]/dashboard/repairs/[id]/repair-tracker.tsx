@@ -38,6 +38,8 @@ interface RepairData {
   estimatedDate: string;
   address: string;
   steps: RepairStep[];
+  microUpdates: { time: string; text: string; highlight?: boolean }[];
+  appointment?: { date: string; slot: string };
 }
 
 const DEMO_REPAIR: RepairData = {
@@ -58,6 +60,14 @@ const DEMO_REPAIR: RepairData = {
     { label: 'On the Way', description: 'Your engineer is heading to your property', date: '12 Apr', time: '13:45', completed: true, icon: MapPin },
     { label: 'Completed', description: 'Repair finished — please rate your experience', date: null, time: null, completed: false, icon: Star },
   ],
+  microUpdates: [
+    { time: '13:45', text: 'Dai Evans checked in at Cwmbran depot' },
+    { time: '13:50', text: 'Parts confirmed: replacement tap washer + sealant' },
+    { time: '13:55', text: 'Engineer left depot — heading to your property' },
+    { time: '14:05', text: '10 minutes away from 14 Heol y Castell', highlight: true },
+    { time: '14:12', text: '5 minutes away', highlight: true },
+  ],
+  appointment: { date: 'Tuesday 15 April', slot: 'PM (12:00 — 5:00 PM)' },
 };
 
 function CountdownTimer({ targetDate }: { targetDate: string }) {
@@ -319,6 +329,50 @@ export default function RepairTracker({ repairId }: { repairId: string }) {
           </div>
         )}
       </div>
+
+      {/* Appointment slot */}
+      {repair.appointment && (
+        <div className="rounded-xl border border-primary-200 bg-primary-50 p-5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-medium text-primary-700">Your Appointment</p>
+              <p className="mt-1 text-sm font-bold text-foreground">{repair.appointment.date}</p>
+              <p className="text-xs text-muted-foreground">{repair.appointment.slot}</p>
+            </div>
+            <button className="rounded-lg border border-primary-200 bg-white px-3 py-1.5 text-xs font-medium text-primary-700 transition-colors hover:bg-primary-100">
+              Reschedule
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Live micro-updates */}
+      {repair.microUpdates.length > 0 && (
+        <div className="rounded-xl border border-border bg-card p-5">
+          <h3 className="flex items-center gap-2 text-sm font-semibold text-card-foreground">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+            Live Updates
+          </h3>
+          <div className="mt-3 space-y-2">
+            {repair.microUpdates.map((update, i) => (
+              <div
+                key={i}
+                className={`flex items-center gap-3 rounded-lg p-2.5 text-sm ${
+                  update.highlight
+                    ? 'bg-green-50 text-green-800 font-medium'
+                    : 'text-muted-foreground'
+                }`}
+              >
+                <span className="shrink-0 font-mono text-xs">{update.time}</span>
+                <span className={`h-1 w-1 shrink-0 rounded-full ${
+                  update.highlight ? 'bg-green-500' : 'bg-muted-foreground/40'
+                }`} />
+                <span>{update.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Repair details */}
       <div className="rounded-xl border border-border bg-card p-5">
