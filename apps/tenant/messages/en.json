@@ -26,10 +26,14 @@
     "home": "Home",
     "repairs": "Repairs",
     "rent": "Rent",
+    "myHome": "My Home",
+    "tenancy": "Tenancy",
+    "complaints": "Complaints",
     "profile": "My Profile",
     "support": "Support",
     "settings": "Settings",
-    "rewards": "Rewards"
+    "rewards": "Rewards",
+    "more": "More"
   },
   "dashboard": {
     "welcome": "Welcome back, {name}",

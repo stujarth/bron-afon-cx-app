@@ -8,8 +8,11 @@ import {
   LogOut,
   Menu,
   Trophy,
-  Bell,
   Inbox,
+  Building2,
+  FileText,
+  MessageSquareWarning,
+  MoreHorizontal,
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 import { BronAfonLogo, BronAfonLogoCompact } from './bron-afon-logo';
@@ -26,7 +29,10 @@ function Sidebar() {
     { href: '/dashboard', label: t('home'), icon: Home },
     { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
+    { href: '/dashboard/my-home', label: t('myHome'), icon: Building2 },
+    { href: '/dashboard/tenancy', label: t('tenancy'), icon: FileText },
     { href: '/dashboard/inbox', label: 'Inbox', icon: Inbox },
+    { href: '/dashboard/complaints', label: t('complaints'), icon: MessageSquareWarning },
     { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
     { href: '/dashboard/profile', label: t('profile'), icon: User },
     { href: '/dashboard/support', label: t('support'), icon: HelpCircle },
@@ -84,8 +90,8 @@ function MobileBottomNav() {
     { href: '/dashboard', label: t('home'), icon: Home },
     { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
-    { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
-    { href: '/dashboard/profile', label: t('profile'), icon: User },
+    { href: '/dashboard/my-home', label: t('myHome'), icon: Building2 },
+    { href: '/dashboard/tenancy', label: t('more'), icon: MoreHorizontal },
   ];
 
   return (
