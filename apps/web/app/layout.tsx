@@ -103,7 +103,7 @@ function Footer() {
 
         <div className="mt-8 flex flex-col items-center gap-1 border-t border-border pt-8 text-center text-sm text-muted-foreground sm:flex-row sm:justify-between">
           <span>&copy; {new Date().getFullYear()} Hafan. All rights reserved.</span>
-          <span className="font-mono text-[10px] text-muted-foreground/70">web v0.4.0</span>
+          <span className="font-mono text-[10px] text-muted-foreground/70">web v0.4.1</span>
         </div>
       </div>
     </footer>

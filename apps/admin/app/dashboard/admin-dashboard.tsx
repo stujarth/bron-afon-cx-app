@@ -374,7 +374,7 @@ export default function AdminDashboard() {
             Open casework →
           </Link>
         </div>
-        <div className="grid gap-3 grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-3 grid-cols-2 lg:grid-cols-6">
           <CaseTile
             href="/dashboard/casework"
             icon={MessageSquareWarning}
@@ -419,6 +419,15 @@ export default function AdminDashboard() {
             sla="1 new"
             slaTone="amber"
             color="bg-purple-100 text-purple-700"
+          />
+          <CaseTile
+            href="/dashboard/feedback"
+            icon={ClipboardList}
+            label="Feedback"
+            count={3}
+            sla="Awaiting reply"
+            slaTone="amber"
+            color="bg-amber-100 text-amber-700"
           />
         </div>
       </section>
