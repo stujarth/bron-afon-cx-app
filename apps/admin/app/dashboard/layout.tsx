@@ -9,12 +9,16 @@ import {
   LogOut,
   Menu,
   Shield,
+  ClipboardList,
+  CalendarDays,
 } from 'lucide-react';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/dashboard/tenants', label: 'Tenants', icon: Users },
   { href: '/dashboard/repairs', label: 'Repairs', icon: Wrench },
+  { href: '/dashboard/casework', label: 'Casework', icon: ClipboardList },
+  { href: '/dashboard/planned-works', label: 'Planned works', icon: CalendarDays },
   { href: '/dashboard/communications', label: 'Communications', icon: MessageSquare },
   { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
 ];
@@ -58,6 +62,9 @@ function AdminSidebar() {
             <p className="truncate text-xs text-muted-foreground">Staff</p>
           </div>
         </div>
+        <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground/60">
+          admin v0.4.0
+        </p>
       </div>
     </aside>
   );

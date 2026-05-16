@@ -78,6 +78,9 @@ function Sidebar() {
             <p className="truncate text-xs text-muted-foreground">14 Heol y Castell</p>
           </div>
         </div>
+        <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground/60">
+          tenant v0.4.0
+        </p>
       </div>
     </aside>
   );
@@ -133,6 +136,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Menu className="h-5 w-5" />
             </button>
             <BronAfonLogoCompact />
+            <span className="font-mono text-[10px] text-muted-foreground/60">v0.4.0</span>
           </div>
 
           <div className="hidden lg:block" />

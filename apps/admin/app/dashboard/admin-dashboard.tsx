@@ -1,10 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import {
   Users,
   Wrench,
   PoundSterling,
-  MessageSquare,
   AlertTriangle,
   TrendingUp,
   TrendingDown,
@@ -13,6 +13,12 @@ import {
   CheckCircle2,
   Phone,
   Star,
+  MessageSquareWarning,
+  ShieldAlert,
+  Volume2,
+  ArrowLeftRight,
+  Accessibility,
+  ClipboardList,
 } from 'lucide-react';
 
 function MetricCard({
@@ -199,6 +205,47 @@ function TrendChart() {
   );
 }
 
+function CaseTile({
+  href,
+  icon: Icon,
+  label,
+  count,
+  sla,
+  slaTone,
+  color,
+}: {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  count: number;
+  sla: string;
+  slaTone: 'red' | 'amber' | 'green';
+  color: string;
+}) {
+  const slaStyles = {
+    red: 'bg-red-50 text-red-700',
+    amber: 'bg-amber-50 text-amber-700',
+    green: 'bg-green-50 text-green-700',
+  };
+  return (
+    <Link
+      href={href}
+      className="group flex items-start gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary-300 hover:shadow-md"
+    >
+      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${color}`}>
+        <Icon className="h-5 w-5" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs text-muted-foreground">{label}</p>
+        <p className="text-2xl font-bold text-card-foreground leading-tight">{count}</p>
+        <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-medium ${slaStyles[slaTone]}`}>
+          {sla}
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 function AlertCard({ alert }: { alert: { title: string; type: 'urgent' | 'warning' | 'info'; count?: number } }) {
   const styles = {
     urgent: 'bg-red-50 border-red-200 text-red-900',
@@ -306,13 +353,75 @@ export default function AdminDashboard() {
             <p className="text-xs text-muted-foreground">Items needing attention</p>
           </div>
           <div className="space-y-2 p-4">
+            <AlertCard alert={{ title: '1 complaint at risk of SLA breach', type: 'urgent', count: 1 }} />
             <AlertCard alert={{ title: '3 emergency repairs awaiting triage', type: 'urgent', count: 3 }} />
+            <AlertCard alert={{ title: 'Safeguarding case awaiting Lead review', type: 'urgent', count: 1 }} />
             <AlertCard alert={{ title: 'Tenants with rent arrears > 4 weeks', type: 'warning', count: 12 }} />
-            <AlertCard alert={{ title: 'Block A boiler maintenance scheduled', type: 'info' }} />
+            <AlertCard alert={{ title: 'EV charging consultation open', type: 'info' }} />
             <AlertCard alert={{ title: 'New satisfaction surveys to review', type: 'info', count: 8 }} />
           </div>
         </section>
       </div>
+
+      {/* Casework summary */}
+      <section>
+        <div className="mb-3 flex items-center justify-between">
+          <div>
+            <h2 className="text-sm font-semibold text-foreground">Casework queues</h2>
+            <p className="text-xs text-muted-foreground">Submissions from tenants needing staff action</p>
+          </div>
+          <Link href="/dashboard/casework" className="text-sm text-primary-600 hover:text-primary-700">
+            Open casework →
+          </Link>
+        </div>
+        <div className="grid gap-3 grid-cols-2 lg:grid-cols-5">
+          <CaseTile
+            href="/dashboard/casework"
+            icon={MessageSquareWarning}
+            label="Complaints"
+            count={3}
+            sla="1 at risk"
+            slaTone="red"
+            color="bg-rose-100 text-rose-700"
+          />
+          <CaseTile
+            href="/dashboard/casework"
+            icon={Volume2}
+            label="ASB"
+            count={3}
+            sla="1 to assign"
+            slaTone="amber"
+            color="bg-amber-100 text-amber-700"
+          />
+          <CaseTile
+            href="/dashboard/casework"
+            icon={ShieldAlert}
+            label="Safeguarding"
+            count={2}
+            sla="Lead review"
+            slaTone="red"
+            color="bg-red-100 text-red-700"
+          />
+          <CaseTile
+            href="/dashboard/casework"
+            icon={ArrowLeftRight}
+            label="Mutual exchange"
+            count={2}
+            sla="On track"
+            slaTone="green"
+            color="bg-blue-100 text-blue-700"
+          />
+          <CaseTile
+            href="/dashboard/casework"
+            icon={Accessibility}
+            label="Adaptations"
+            count={3}
+            sla="1 new"
+            slaTone="amber"
+            color="bg-purple-100 text-purple-700"
+          />
+        </div>
+      </section>
 
       {/* Charts */}
       <div className="grid gap-6 lg:grid-cols-2">
