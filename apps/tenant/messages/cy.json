@@ -26,10 +26,14 @@
     "home": "Hafan",
     "repairs": "Atgyweiriadau",
     "rent": "Rhent",
+    "myHome": "Fy Nghartref",
+    "tenancy": "Tenantiaeth",
+    "complaints": "Cwynion",
     "profile": "Fy Mhroffil",
     "support": "Cymorth",
     "settings": "Gosodiadau",
-    "rewards": "Gwobrau"
+    "rewards": "Gwobrau",
+    "more": "Mwy"
   },
   "dashboard": {
     "welcome": "Croeso yn ôl, {name}",

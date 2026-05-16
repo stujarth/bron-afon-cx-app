@@ -3,12 +3,17 @@ import {
   Wrench,
   PoundSterling,
   HelpCircle,
-  User,
   Trophy,
   ArrowRight,
   Sparkles,
   Clock,
   Bell,
+  Building2,
+  MessageSquareWarning,
+  Star,
+  ShieldCheck,
+  Flame,
+  CalendarClock,
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 
@@ -279,6 +284,10 @@ export default function DashboardPage() {
         </div>
       </section>
 
+      <FeedbackPrompt />
+
+      <UpcomingCompliance />
+
       <section>
         <h2 className="mb-3 text-sm font-semibold text-foreground">{t('quickActions')}</h2>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -297,23 +306,84 @@ export default function DashboardPage() {
             color="bg-green-100 text-green-700"
           />
           <QuickActionCard
+            href="/dashboard/my-home"
+            icon={Building2}
+            title="My Home"
+            description="Planned works, adaptations, communal areas"
+            color="bg-indigo-100 text-indigo-700"
+          />
+          <QuickActionCard
+            href="/dashboard/tenancy"
+            icon={ShieldCheck}
+            title="Tenancy"
+            description="ASB, safeguarding, mutual exchange and more"
+            color="bg-slate-100 text-slate-700"
+          />
+          <QuickActionCard
+            href="/dashboard/complaints"
+            icon={MessageSquareWarning}
+            title="Complaints & feedback"
+            description="Make a complaint or share your experience"
+            color="bg-rose-100 text-rose-700"
+          />
+          <QuickActionCard
             href="/dashboard/support"
             icon={HelpCircle}
             title={t('getHelp')}
             description={t('getHelpDesc')}
             color="bg-purple-100 text-purple-700"
           />
-          <QuickActionCard
-            href="/dashboard/profile"
-            icon={User}
-            title={t('myProfile')}
-            description={t('myProfileDesc')}
-            color="bg-orange-100 text-orange-700"
-          />
         </div>
       </section>
 
       <RecentActivity />
     </div>
+  );
+}
+
+function FeedbackPrompt() {
+  return (
+    <Link
+      href="/dashboard/complaints"
+      className="group flex items-center gap-4 rounded-xl border border-amber-200 bg-amber-50/40 p-4 transition-all hover:shadow-md"
+    >
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white">
+        <Star className="h-5 w-5 text-amber-600" />
+      </div>
+      <div className="flex-1">
+        <p className="text-sm font-semibold text-foreground">
+          How was your recent repair?
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Rate the kitchen tap repair (REP-2026-0412). Takes 30 seconds · earn 20 points.
+        </p>
+      </div>
+      <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
+    </Link>
+  );
+}
+
+function UpcomingCompliance() {
+  return (
+    <Link
+      href="/dashboard/repairs"
+      className="group flex items-center gap-4 rounded-xl border border-orange-200 bg-orange-50/40 p-4 transition-all hover:shadow-md"
+    >
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white">
+        <Flame className="h-5 w-5 text-orange-600" />
+      </div>
+      <div className="flex-1">
+        <div className="flex items-center gap-2">
+          <p className="text-sm font-semibold text-foreground">Boiler service due soon</p>
+          <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-700">
+            6 weeks
+          </span>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          We will book this for you — or pick a date that suits.
+        </p>
+      </div>
+      <CalendarClock className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
+    </Link>
   );
 }
