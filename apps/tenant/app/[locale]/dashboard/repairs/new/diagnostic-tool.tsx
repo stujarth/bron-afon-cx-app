@@ -92,7 +92,8 @@ export default function DiagnosticTool() {
             <p className="text-sm font-semibold text-primary-800">AI Diagnostic Tool</p>
             <p className="mt-0.5 text-xs text-primary-600">
               Upload a photo or video and our AI will try to identify the issue, suggest quick fixes,
-              and recommend the right trade — before we send someone out.
+              and recommend the right trade — so we can prepare the right parts and get the right
+              specialist to you faster.
             </p>
           </div>
         </div>

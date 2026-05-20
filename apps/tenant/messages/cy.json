@@ -33,6 +33,7 @@
     "support": "Cymorth",
     "settings": "Gosodiadau",
     "rewards": "Gwobrau",
+    "inbox": "Mewnflwch",
     "more": "Mwy"
   },
   "dashboard": {
@@ -65,6 +66,7 @@
   "rewards": {
     "title": "Gwobrau a Chyflawniadau",
     "points": "pwy",
+    "pointsLabel": "{n} pwynt",
     "currentLevel": "Lefel Bresennol",
     "pointsToNext": "{points} pwynt i {level}",
     "weekStreak": "wythnos yn olynol",
@@ -72,6 +74,8 @@
     "thisMonth": "Y mis hwn",
     "pointsHistory": "Hanes Pwyntiau",
     "howToEarn": "Sut i Ennill Pwyntiau",
+    "whatPointsAreFor": "Beth yw diben pwyntiau?",
+    "whatPointsAreForDesc": "Mae pwyntiau'n cydnabod yr amser rydych yn ei roi i ni — drwy dalu ar amser, rhannu adborth neu fynychu digwyddiadau cymunedol. Maent yn datgloi bathodynnau, raffl gymunedol misol, a (cyn bo hir) gostyngiadau gyda busnesau lleol yng Nghwmbrân yr ydym yn partneru â hwy.",
     "levelBronze": "Efydd",
     "levelSilver": "Arian",
     "levelGold": "Aur",
@@ -165,13 +169,29 @@
     "title": "Fy Mhroffil",
     "personalDetails": "Manylion Personol",
     "contactPreferences": "Dewisiadau Cyswllt",
+    "contactPreferencesDesc": "Dewiswch sut yr ydych yn derbyn hysbysiadau ar gyfer pob math o gyfathrebu.",
     "language": "Dewis Iaith",
     "notifications": "Hysbysiadau",
     "address": "Fy Nghyfeiriad",
     "tenantSince": "Tenant ers {year}",
+    "goldMember": "Aelod Aur",
     "name": "Enw",
     "email": "E-bost",
     "phone": "Rhif Ffôn",
+    "channelEmail": "E-bost",
+    "channelSms": "SMS",
+    "channelPush": "Gwthio",
+    "channelPost": "Post",
+    "categoryRepairs": "Atgyweiriadau",
+    "categoryRepairsDesc": "Diweddariadau statws a threfnu",
+    "categoryRent": "Rhent",
+    "categoryRentDesc": "Taliadau a diweddariadau cyfrif",
+    "categoryGeneral": "Cyffredinol",
+    "categoryGeneralDesc": "Digwyddiadau cymunedol a newyddion",
+    "categorySafety": "Diogelwch",
+    "categorySafetyDesc": "Diogelwch nwy, tân, cydymffurfio",
+    "requiredByLaw": "Yn ofynnol yn gyfreithiol — methu â'i ddiffodd",
+    "legalNotice": "Mae rhai cyfathrebiadau yn ofynnol yn gyfreithiol i'w hanfon drwy bost neu e-bost (e.e. adolygiadau rhent blynyddol, tystysgrifau diogelwch nwy). Ni ellir eu diffodd ac maent wedi'u marcio â thogl wedi'i gloi.",
     "emailNotifications": "Hysbysiadau e-bost",
     "smsNotifications": "Hysbysiadau SMS",
     "pushNotifications": "Hysbysiadau gwthio"
@@ -188,7 +208,17 @@
     "typing": "Teipio...",
     "typeMessage": "Teipiwch eich neges...",
     "openHours": "Llun-Gwe, 8am-6pm",
-    "startChat": "Dechrau sgwrs"
+    "startChat": "Dechrau sgwrs",
+    "faqs": {
+      "q1": "Sut ydw i'n rhoi gwybod am atgyweiriad?",
+      "a1": "Ewch i Atgyweiriadau, dewiswch Rhoi Gwybod am Atgyweiriad Newydd, ac yna naill ai uwchlwytho llun ar gyfer y diagnostig AI neu lenwi'r ffurflen fer. Byddwch yn cael rhif cyfeirio ar unwaith a byddwn mewn cysylltiad i gadarnhau apwyntiad.",
+      "q2": "Sut ydw i'n talu fy rhent ar-lein?",
+      "a2": "Ewch i Rhent a dewiswch Gwneud taliad untro, neu sefydlu debyd uniongyrchol o dan Dulliau talu. Gallwch ddefnyddio cerdyn debyd neu gyfrif banc — diogelir taliadau gan Stripe.",
+      "q3": "Beth sy'n cael ei ystyried fel atgyweiriad brys?",
+      "a3": "Pibellau wedi byrstio, colled llwyr o wresogi mewn tywydd oer, trydan anniogel, gollyngiadau nwy, neu ddim mynediad i'ch cartref. Ffoniwch 0800 123 4567 ddydd neu nos — peidiwch ag aros i'w logio yn yr ap.",
+      "q4": "Sut ydw i'n ennill pwyntiau gwobrau?",
+      "a4": "Talu rhent ar amser, rhoi gwybod am atgyweiriadau ar-lein, cwblhau arolwg, defnyddio'r diagnostig AI, diweddaru'ch proffil, neu gyfeirio cymydog. Gweler Gwobrau am y rhestr lawn a'ch balans cyfredol."
+    }
   },
   "diagnostic": {
     "title": "Offer Diagnostig AI",

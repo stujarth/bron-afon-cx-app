@@ -92,7 +92,7 @@ function SidebarFooter() {
         </div>
       </div>
       <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground/60">
-        admin v0.4.1
+        admin v0.5.0
       </p>
     </div>
   );

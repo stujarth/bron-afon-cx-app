@@ -507,18 +507,18 @@ function NewBuildTab() {
     {
       id: 'defect-1',
       title: 'Hairline crack — living room wall',
-      reported: '2 Apr 2026',
+      reported: '2 May 2026',
       status: 'Booked for remediation',
       severity: 'Snag',
-      detail: 'Settlement crack near window reveal. Developer to fill and decorate during defects visit on 28 April.',
+      detail: 'Settlement crack near window reveal. Developer to fill and decorate during defects visit on 28 May.',
     },
     {
       id: 'defect-2',
       title: 'Sticking front door catch',
-      reported: '18 Mar 2026',
+      reported: '18 Apr 2026',
       status: 'Resolved',
       severity: 'Snag',
-      detail: 'Latch adjusted on 24 March. Reported as fixed by tenant.',
+      detail: 'Latch adjusted on 24 April. Reported as fixed by tenant.',
     },
   ];
 

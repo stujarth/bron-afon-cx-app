@@ -14,7 +14,9 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
+  ChevronRight,
   Star,
+  X,
 } from 'lucide-react';
 
 interface RepairStep {
@@ -51,13 +53,13 @@ const DEMO_REPAIR: RepairData = {
   priority: 'routine',
   assignedTo: 'Dai Evans',
   assignedPhone: '07700 900456',
-  estimatedDate: '2026-04-15T14:00:00',
+  estimatedDate: '2026-05-26T14:00:00',
   address: '14 Heol y Castell, Cwmbran',
   steps: [
-    { label: 'Reported', description: 'You submitted this repair request', date: '10 Apr', time: '09:15', completed: true, icon: AlertCircle },
-    { label: 'Assessed', description: 'Our team reviewed and categorised your repair', date: '10 Apr', time: '11:30', completed: true, icon: CheckCircle2 },
-    { label: 'Scheduled', description: 'Appointment booked with our engineer', date: '11 Apr', time: '08:00', completed: true, icon: Calendar },
-    { label: 'On the Way', description: 'Your engineer is heading to your property', date: '12 Apr', time: '13:45', completed: true, icon: MapPin },
+    { label: 'Reported', description: 'You submitted this repair request', date: '17 May', time: '09:15', completed: true, icon: AlertCircle },
+    { label: 'Assessed', description: 'Our team reviewed and categorised your repair', date: '17 May', time: '11:30', completed: true, icon: CheckCircle2 },
+    { label: 'Scheduled', description: 'Appointment booked with our engineer', date: '18 May', time: '08:00', completed: true, icon: Calendar },
+    { label: 'On the Way', description: 'Your engineer is heading to your property', date: '20 May', time: '13:45', completed: true, icon: MapPin },
     { label: 'Completed', description: 'Repair finished — please rate your experience', date: null, time: null, completed: false, icon: Star },
   ],
   microUpdates: [
@@ -67,7 +69,7 @@ const DEMO_REPAIR: RepairData = {
     { time: '14:05', text: '10 minutes away from 14 Heol y Castell', highlight: true },
     { time: '14:12', text: '5 minutes away', highlight: true },
   ],
-  appointment: { date: 'Tuesday 15 April', slot: 'PM (12:00 — 5:00 PM)' },
+  appointment: { date: 'Tuesday 26 May 2026', slot: 'PM (12:00 — 5:00 PM)' },
 };
 
 function CountdownTimer({ targetDate }: { targetDate: string }) {
@@ -205,6 +207,8 @@ function LiveStatusBanner({ repair }: { repair: RepairData }) {
 export default function RepairTracker({ repairId }: { repairId: string }) {
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [showReschedule, setShowReschedule] = useState(false);
+  const [rescheduled, setRescheduled] = useState<{ date: string; window: string; engineer: string } | null>(null);
   const repair = DEMO_REPAIR;
 
   const completedCount = repair.steps.filter((s) => s.completed).length;
@@ -241,7 +245,7 @@ export default function RepairTracker({ repairId }: { repairId: string }) {
             <Calendar className="h-4 w-4" />
             <p className="text-xs">Estimated</p>
           </div>
-          <p className="mt-1 text-sm font-bold text-card-foreground">15 Apr 2026</p>
+          <p className="mt-1 text-sm font-bold text-card-foreground">26 May 2026</p>
           <p className="text-xs text-muted-foreground">2:00 PM</p>
         </div>
       </div>
@@ -336,13 +340,44 @@ export default function RepairTracker({ repairId }: { repairId: string }) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs font-medium text-primary-700">Your Appointment</p>
-              <p className="mt-1 text-sm font-bold text-foreground">{repair.appointment.date}</p>
-              <p className="text-xs text-muted-foreground">{repair.appointment.slot}</p>
+              {rescheduled ? (
+                <>
+                  <p className="mt-1 text-sm font-bold text-foreground">{rescheduled.date}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {rescheduled.window} · {rescheduled.engineer}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="mt-1 text-sm font-bold text-foreground">{repair.appointment.date}</p>
+                  <p className="text-xs text-muted-foreground">{repair.appointment.slot}</p>
+                </>
+              )}
             </div>
-            <button className="rounded-lg border border-primary-200 bg-white px-3 py-1.5 text-xs font-medium text-primary-700 transition-colors hover:bg-primary-100">
-              Reschedule
+            <button
+              onClick={() => setShowReschedule((s) => !s)}
+              className="rounded-lg border border-primary-200 bg-white px-3 py-1.5 text-xs font-medium text-primary-700 transition-colors hover:bg-primary-100"
+            >
+              {showReschedule ? 'Close' : 'Reschedule'}
             </button>
           </div>
+
+          {rescheduled && !showReschedule && (
+            <div className="mt-3 flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-xs font-medium text-green-800">
+              <CheckCircle2 className="h-3.5 w-3.5" />
+              New slot confirmed — SMS reminder will arrive the day before.
+            </div>
+          )}
+
+          {showReschedule && (
+            <ReschedulePicker
+              onClose={() => setShowReschedule(false)}
+              onConfirm={(slot) => {
+                setRescheduled(slot);
+                setShowReschedule(false);
+              }}
+            />
+          )}
         </div>
       )}
 
@@ -386,6 +421,53 @@ export default function RepairTracker({ repairId }: { repairId: string }) {
             {repair.priority.charAt(0).toUpperCase() + repair.priority.slice(1)}
           </span>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function ReschedulePicker({
+  onClose,
+  onConfirm,
+}: {
+  onClose: () => void;
+  onConfirm: (slot: { date: string; window: string; engineer: string }) => void;
+}) {
+  const slots = [
+    { date: 'Wed 27 May 2026', window: 'AM (8am – 12pm)', engineer: 'Dai Evans' },
+    { date: 'Thu 28 May 2026', window: 'PM (1pm – 5pm)', engineer: 'Bethan Lloyd' },
+    { date: 'Fri 29 May 2026', window: 'AM (8am – 12pm)', engineer: 'Dai Evans' },
+    { date: 'Mon 1 Jun 2026', window: 'PM (1pm – 5pm)', engineer: 'Bethan Lloyd' },
+  ];
+
+  return (
+    <div className="mt-4 rounded-lg border border-border bg-white p-3">
+      <div className="flex items-center justify-between">
+        <p className="text-xs font-medium text-foreground">Pick an alternative slot</p>
+        <button
+          onClick={onClose}
+          className="rounded-lg p-1 text-muted-foreground hover:bg-muted"
+          aria-label="Close reschedule picker"
+        >
+          <X className="h-3.5 w-3.5" />
+        </button>
+      </div>
+      <div className="mt-2 space-y-1.5">
+        {slots.map((s) => (
+          <button
+            key={`${s.date}-${s.window}`}
+            onClick={() => onConfirm(s)}
+            className="flex w-full items-center justify-between rounded-lg border border-border px-3 py-2 text-left text-sm transition-colors hover:border-primary-400 hover:bg-primary-50/40"
+          >
+            <div>
+              <p className="font-medium text-card-foreground">{s.date}</p>
+              <p className="text-xs text-muted-foreground">
+                {s.window} · {s.engineer}
+              </p>
+            </div>
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          </button>
+        ))}
       </div>
     </div>
   );

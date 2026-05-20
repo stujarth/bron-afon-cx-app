@@ -103,10 +103,10 @@ function RepairCard({
 function RescheduleInline({ onClose }: { onClose: () => void }) {
   const [confirmed, setConfirmed] = useState<string | null>(null);
   const slots = [
-    { date: 'Tue 14 May', window: 'AM (8am – 12pm)', engineer: 'Dai Evans' },
-    { date: 'Thu 16 May', window: 'PM (1pm – 5pm)', engineer: 'Bethan Lloyd' },
-    { date: 'Fri 17 May', window: 'PM (1pm – 5pm)', engineer: 'Dai Evans' },
-    { date: 'Mon 20 May', window: 'AM (8am – 12pm)', engineer: 'Bethan Lloyd' },
+    { date: 'Wed 27 May', window: 'AM (8am – 12pm)', engineer: 'Dai Evans' },
+    { date: 'Thu 28 May', window: 'PM (1pm – 5pm)', engineer: 'Bethan Lloyd' },
+    { date: 'Fri 29 May', window: 'PM (1pm – 5pm)', engineer: 'Dai Evans' },
+    { date: 'Mon 1 Jun', window: 'AM (8am – 12pm)', engineer: 'Bethan Lloyd' },
   ];
 
   if (confirmed) {
@@ -222,7 +222,7 @@ export default function RepairsPage() {
       id: 'repair-1',
       title: 'Leaking tap in kitchen',
       status: 'in_progress',
-      date: '10 April 2026',
+      date: '17 May 2026',
       appointment: 'Today · 1pm – 3pm · Dai Evans',
       steps: [
         { label: 'Reported', completed: true },
@@ -236,8 +236,8 @@ export default function RepairsPage() {
       id: 'repair-2',
       title: 'Broken window handle — bedroom',
       status: 'scheduled',
-      date: '8 April 2026',
-      appointment: 'Thu 15 May · AM (8am – 12pm)',
+      date: '15 May 2026',
+      appointment: 'Thu 28 May · AM (8am – 12pm)',
       steps: [
         { label: 'Reported', completed: true },
         { label: 'Triaging', completed: true },
@@ -324,7 +324,7 @@ export default function RepairsPage() {
               <p className="text-sm font-medium text-card-foreground">
                 Boiler — annual service
               </p>
-              <p className="text-xs text-muted-foreground">Completed 14 Mar 2026 by Bethan Lloyd</p>
+              <p className="text-xs text-muted-foreground">Completed 24 Apr 2026 by Bethan Lloyd</p>
             </div>
             <Link
               href="/dashboard/complaints"

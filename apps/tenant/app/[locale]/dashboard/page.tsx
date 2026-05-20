@@ -269,7 +269,7 @@ export default function DashboardPage() {
           />
           <StatCard
             label={t('nextPayment')}
-            value="18 Apr"
+            value="25 May"
             subtext="£98.75"
             icon={Clock}
             iconColor="bg-purple-100 text-purple-700"

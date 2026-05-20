@@ -37,15 +37,15 @@ const RESPONSES: Record<string, { reply: string; quickReplies?: string[] }> = {
     quickReplies: ['Track this repair', 'Report another', 'Back to menu'],
   },
   rent: {
-    reply: "Here's your rent account summary:\n\n💰 **Balance:** £125.50 in credit\n📅 **Weekly rent:** £98.75\n📅 **Next payment:** 18 April 2026 (Direct Debit)\n\n✅ Your account is in good standing. Your last 4 payments were all on time — that's earned you **20 bonus points!**",
+    reply: "Here's your rent account summary:\n\n💰 **Balance:** £125.50 in credit\n📅 **Weekly rent:** £98.75\n📅 **Next payment:** 25 May 2026 (Direct Debit)\n\n✅ Your account is in good standing. Your last 4 payments were all on time — that's earned you **20 bonus points!**",
     quickReplies: ['Make a payment', 'Payment history', 'Back to menu'],
   },
   'check my rent': {
-    reply: "Here's your rent account summary:\n\n💰 **Balance:** £125.50 in credit\n📅 **Weekly rent:** £98.75\n📅 **Next payment:** 18 April 2026 (Direct Debit)\n\n✅ Your account is in good standing!",
+    reply: "Here's your rent account summary:\n\n💰 **Balance:** £125.50 in credit\n📅 **Weekly rent:** £98.75\n📅 **Next payment:** 25 May 2026 (Direct Debit)\n\n✅ Your account is in good standing!",
     quickReplies: ['Make a payment', 'Payment history', 'Back to menu'],
   },
   'track my repair': {
-    reply: "I found your active repair:\n\n🔧 **REP-2026-0412** — Leaking tap in kitchen\n📊 **Status:** Engineer on the way\n👷 **Engineer:** Dai Evans (Plumbing)\n📅 **ETA:** 15 April 2026, 2:00 PM\n\nYour repair is at step 4 of 5. Would you like to see the full tracker?",
+    reply: "I found your active repair:\n\n🔧 **REP-2026-0412** — Leaking tap in kitchen\n📊 **Status:** Engineer on the way\n👷 **Engineer:** Dai Evans (Plumbing)\n📅 **ETA:** 26 May 2026, 2:00 PM\n\nYour repair is at step 4 of 5. Would you like to see the full tracker?",
     quickReplies: ['Open repair tracker', 'Call engineer', 'Back to menu'],
   },
   'speak to someone': {
@@ -57,7 +57,7 @@ const RESPONSES: Record<string, { reply: string; quickReplies?: string[] }> = {
     quickReplies: ['Phone number', 'Email', 'Language', 'Notifications'],
   },
   'diagnose an issue': {
-    reply: "Great idea! Our diagnostic tool can help identify the problem before we send someone out.\n\n📸 **Upload a photo** of the issue and I'll analyse it using AI to:\n• Identify the likely problem\n• Suggest any quick fixes you could try\n• Recommend the right trade for the repair\n\nHead to the **Diagnostics** section to upload a photo, or describe what you're seeing.",
+    reply: "Great idea! Our diagnostic tool helps us prepare the right parts and get the right specialist to you faster.\n\n📸 **Upload a photo** of the issue and I'll analyse it using AI to:\n• Identify the likely problem\n• Suggest any quick fixes you could try\n• Recommend the right trade for the repair\n\nHead to the **Diagnostics** section to upload a photo, or describe what you're seeing.",
     quickReplies: ['Go to diagnostics', 'Describe the issue', 'Back to menu'],
   },
   'back to menu': {
@@ -157,7 +157,7 @@ export default function Chatbot() {
     {
       id: '1',
       role: 'assistant',
-      content: "Helo! 👋 Croeso i Bron Afon. I'm your Hafan AI assistant. I can help with repairs, rent queries, account updates, and more. How can I help you today?",
+      content: "Hi! 👋 I'm your Hafan assistant. I can help with repairs, rent and more — what's up?",
       timestamp: new Date(),
       quickReplies: ['Report a repair', 'Check my rent', 'Update my details', 'Speak to someone'],
     },

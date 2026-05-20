@@ -31,7 +31,7 @@ function Sidebar() {
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
     { href: '/dashboard/my-home', label: t('myHome'), icon: Building2 },
     { href: '/dashboard/tenancy', label: t('tenancy'), icon: FileText },
-    { href: '/dashboard/inbox', label: 'Inbox', icon: Inbox },
+    { href: '/dashboard/inbox', label: t('inbox'), icon: Inbox },
     { href: '/dashboard/complaints', label: t('complaints'), icon: MessageSquareWarning },
     { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
     { href: '/dashboard/profile', label: t('profile'), icon: User },
@@ -79,7 +79,7 @@ function Sidebar() {
           </div>
         </div>
         <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground/60">
-          tenant v0.4.1
+          tenant v0.5.0
         </p>
       </div>
     </aside>
@@ -136,7 +136,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Menu className="h-5 w-5" />
             </button>
             <BronAfonLogoCompact />
-            <span className="font-mono text-[10px] text-muted-foreground/60">v0.4.1</span>
+            <span className="font-mono text-[10px] text-muted-foreground/60">v0.5.0</span>
           </div>
 
           <div className="hidden lg:block" />

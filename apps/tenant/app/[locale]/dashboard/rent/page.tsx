@@ -337,7 +337,7 @@ function CreditBalanceCard() {
         </div>
         <div>
           <p className="text-xs text-primary-200">{t('nextPayment')}</p>
-          <p className="text-lg font-semibold">18 Apr 2026</p>
+          <p className="text-lg font-semibold">25 May 2026</p>
         </div>
       </div>
 
@@ -373,7 +373,7 @@ function ArrearsBalanceCard() {
         </div>
         <div>
           <p className="text-xs text-rose-200">Next payment due</p>
-          <p className="text-lg font-semibold">Fri 16 May</p>
+          <p className="text-lg font-semibold">Fri 22 May</p>
         </div>
       </div>
 
@@ -549,7 +549,7 @@ function RechargesTab() {
     {
       id: 'rc-1',
       label: 'Replacement front door key',
-      raised: '4 Apr 2026',
+      raised: '8 May 2026',
       amount: 18.50,
       status: 'Outstanding',
       detail: 'Lost key replacement issued by office.',
@@ -557,7 +557,7 @@ function RechargesTab() {
     {
       id: 'rc-2',
       label: 'Kitchen tile replacement',
-      raised: '12 Mar 2026',
+      raised: '10 Apr 2026',
       amount: 64.20,
       status: 'Paid',
       detail: 'Replacement of 3 cracked tiles damaged by tenant.',
@@ -658,14 +658,19 @@ function HistoryTab() {
   const t = useTranslations('rent');
 
   const payments = [
-    { date: '4 Apr 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid' },
-    { date: '28 Mar 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid' },
-    { date: '21 Mar 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid' },
-    { date: '14 Mar 2026', amount: '£98.75', method: 'Online', status: 'paid' },
-    { date: '7 Mar 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid' },
-    { date: '29 Feb 2026', amount: '£64.20', method: 'Online (Recharge)', status: 'paid' },
-    { date: '22 Feb 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid' },
+    { date: '15 May 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid', year: '2026' },
+    { date: '8 May 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid', year: '2026' },
+    { date: '1 May 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid', year: '2026' },
+    { date: '24 Apr 2026', amount: '£98.75', method: 'Online', status: 'paid', year: '2026' },
+    { date: '17 Apr 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid', year: '2026' },
+    { date: '10 Apr 2026', amount: '£64.20', method: 'Online (Recharge)', status: 'paid', year: '2026' },
+    { date: '3 Apr 2026', amount: '£98.75', method: 'Direct Debit', status: 'paid', year: '2026' },
+    { date: '20 Dec 2025', amount: '£98.75', method: 'Direct Debit', status: 'paid', year: '2025' },
+    { date: '13 Dec 2025', amount: '£98.75', method: 'Direct Debit', status: 'paid', year: '2025' },
   ];
+
+  const [yearFilter, setYearFilter] = useState<'all' | '2026' | '2025'>('all');
+  const filtered = yearFilter === 'all' ? payments : payments.filter((p) => p.year === yearFilter);
 
   return (
     <div className="space-y-4">
@@ -676,8 +681,24 @@ function HistoryTab() {
             Download statement
           </button>
         </div>
+        <div className="flex flex-wrap gap-2 border-b border-border px-4 py-3" role="group" aria-label="Filter by year">
+          {(['all', '2026', '2025'] as const).map((y) => (
+            <button
+              key={y}
+              onClick={() => setYearFilter(y)}
+              aria-pressed={yearFilter === y}
+              className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                yearFilter === y
+                  ? 'bg-primary-600 text-white'
+                  : 'border border-border bg-background text-foreground hover:bg-muted'
+              }`}
+            >
+              {y === 'all' ? 'All' : y}
+            </button>
+          ))}
+        </div>
         <ul className="divide-y divide-border" role="list">
-          {payments.map((payment, i) => (
+          {filtered.map((payment, i) => (
             <li key={i} className="flex items-center justify-between p-4">
               <div className="flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50">
