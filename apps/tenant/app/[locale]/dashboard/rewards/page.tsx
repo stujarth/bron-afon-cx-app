@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
   Trophy,
   Star,
@@ -17,6 +18,7 @@ import {
   PoundSterling,
   Wrench,
   MessageSquare,
+  Sparkles,
 } from 'lucide-react';
 import { Link } from '../../../../i18n/navigation';
 
@@ -40,16 +42,17 @@ const BADGES = [
 ];
 
 const POINTS_HISTORY = [
-  { action: 'On-time rent payment', points: 10, date: '4 Apr', icon: PoundSterling },
-  { action: 'Repair feedback submitted', points: 15, date: '2 Apr', icon: MessageSquare },
-  { action: 'Profile updated', points: 5, date: '28 Mar', icon: CheckCircle2 },
-  { action: 'On-time rent payment', points: 10, date: '28 Mar', icon: PoundSterling },
-  { action: 'Used AI diagnostic', points: 20, date: '25 Mar', icon: Zap },
-  { action: 'On-time rent payment', points: 10, date: '21 Mar', icon: PoundSterling },
-  { action: 'Repair reported online', points: 15, date: '18 Mar', icon: Wrench },
+  { action: 'On-time rent payment', points: 10, date: '15 May', icon: PoundSterling },
+  { action: 'Repair feedback submitted', points: 15, date: '12 May', icon: MessageSquare },
+  { action: 'Profile updated', points: 5, date: '8 May', icon: CheckCircle2 },
+  { action: 'On-time rent payment', points: 10, date: '8 May', icon: PoundSterling },
+  { action: 'Used AI diagnostic', points: 20, date: '5 May', icon: Zap },
+  { action: 'On-time rent payment', points: 10, date: '1 May', icon: PoundSterling },
+  { action: 'Repair reported online', points: 15, date: '28 Apr', icon: Wrench },
 ];
 
 export default function RewardsPage() {
+  const tRewards = useTranslations('rewards');
   const currentPoints = 450;
   const currentLevel = LEVELS.find((l) => currentPoints >= l.min && currentPoints < l.max) || LEVELS[2];
   const nextLevel = LEVELS[LEVELS.indexOf(currentLevel) + 1];
@@ -60,10 +63,25 @@ export default function RewardsPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-foreground">Rewards & Achievements</h1>
+        <h1 className="text-2xl font-bold text-foreground">{tRewards('title')}</h1>
         <div className="flex items-center gap-1 rounded-full bg-primary-100 px-3 py-1 text-sm font-bold text-primary-700">
           <Star className="h-4 w-4" />
           {currentPoints} pts
+        </div>
+      </div>
+
+      {/* What are points for */}
+      <div className="rounded-xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-5">
+        <div className="flex items-start gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
+            <Sparkles className="h-5 w-5 text-amber-600" aria-hidden="true" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-foreground">{tRewards('whatPointsAreFor')}</p>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              {tRewards('whatPointsAreForDesc')}
+            </p>
+          </div>
         </div>
       </div>
 

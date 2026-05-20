@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   ArrowLeft,
   Send,
@@ -71,7 +72,7 @@ const DEMO_CONVERSATIONS: Conversation[] = [
       { id: 'r1', sender: 'tenant', content: "Hi, I think I overpaid my rent in January. Can you check my account please?", timestamp: 'Mon 10:30 AM', read: true },
       { id: 'r2', sender: 'staff', staffName: 'Rhian Thomas', staffRole: 'Income Officer', content: "Hi Siân, I've had a look at your account. You're right — there was an overpayment of £47.25 in January. This has been applied as credit to your account.", timestamp: 'Mon 2:15 PM', read: true },
       { id: 'r3', sender: 'tenant', content: "That's great, thank you. Will it just come off my next payment?", timestamp: 'Mon 3:00 PM', read: true },
-      { id: 'r4', sender: 'staff', staffName: 'Rhian Thomas', staffRole: 'Income Officer', content: "Your account is in credit. The overpayment from January has been applied. Your balance shows £125.50 in credit, so your next direct debit on 18 April will still go through as normal, and you'll remain in credit afterwards. No action needed!", timestamp: 'Yesterday', read: true },
+      { id: 'r4', sender: 'staff', staffName: 'Rhian Thomas', staffRole: 'Income Officer', content: "Your account is in credit. The overpayment from January has been applied. Your balance shows £125.50 in credit, so your next direct debit on 25 May will still go through as normal, and you'll remain in credit afterwards. No action needed!", timestamp: 'Yesterday', read: true },
     ],
   },
   {
@@ -84,7 +85,7 @@ const DEMO_CONVERSATIONS: Conversation[] = [
     staffName: 'Gareth Bowen',
     staffRole: 'Community Officer',
     messages: [
-      { id: 'g1', sender: 'staff', staffName: 'Gareth Bowen', staffRole: 'Community Officer', content: "Hi Siân! We're organising a community spring clean on Saturday 26 April at 10am in Heol y Castell. Would you like to join? You'll earn 25 points!", timestamp: 'Last week', read: true },
+      { id: 'g1', sender: 'staff', staffName: 'Gareth Bowen', staffRole: 'Community Officer', content: "Hi Siân! We're organising a community spring clean on Saturday 6 June at 10am in Heol y Castell. Would you like to join? You'll earn 25 points!", timestamp: 'Last week', read: true },
       { id: 'g2', sender: 'tenant', content: "That sounds lovely! Count me in. Can I bring my neighbour too?", timestamp: 'Last week', read: true },
       { id: 'g3', sender: 'staff', staffName: 'Gareth Bowen', staffRole: 'Community Officer', content: "We'd love to have you! There'll be refreshments and a bouncy castle for the kids. Absolutely bring your neighbour — the more the merrier. If they sign up to the app they'll get points too!", timestamp: 'Last week', read: true },
     ],
@@ -269,15 +270,24 @@ function MessageThread({ conversation, onBack }: { conversation: Conversation; o
 }
 
 export default function InboxPage() {
+  const tNav = useTranslations('nav');
+  const [conversations, setConversations] = useState<Conversation[]>(DEMO_CONVERSATIONS);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selectedConv = DEMO_CONVERSATIONS.find((c) => c.id === selectedId);
-  const totalUnread = DEMO_CONVERSATIONS.reduce((sum, c) => sum + c.unread, 0);
+  const selectedConv = conversations.find((c) => c.id === selectedId);
+  const totalUnread = conversations.reduce((sum, c) => sum + c.unread, 0);
+
+  function handleSelect(id: string) {
+    setSelectedId(id);
+    setConversations((prev) =>
+      prev.map((c) => (c.id === id && c.unread > 0 ? { ...c, unread: 0 } : c)),
+    );
+  }
 
   return (
     <div className="mx-auto max-w-5xl">
       <div className="mb-4 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Inbox</h1>
+          <h1 className="text-2xl font-bold text-foreground">{tNav('inbox')}</h1>
           <p className="mt-0.5 text-sm text-muted-foreground">
             {totalUnread > 0 ? `${totalUnread} unread message${totalUnread > 1 ? 's' : ''}` : 'All caught up'}
           </p>
@@ -297,9 +307,9 @@ export default function InboxPage() {
               />
             </div>
             <ConversationList
-              conversations={DEMO_CONVERSATIONS}
+              conversations={conversations}
               selectedId={selectedId}
-              onSelect={setSelectedId}
+              onSelect={handleSelect}
             />
           </div>
 

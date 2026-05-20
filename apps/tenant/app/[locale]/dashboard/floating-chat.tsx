@@ -35,7 +35,7 @@ const RESPONSES_EN: Record<string, { reply: string; quickReplies?: string[] }> =
     quickReplies: ['Report new repair', 'Track my repair', 'Diagnose issue'],
   },
   rent: {
-    reply: "💰 Your rent account:\n\n**Balance:** £125.50 in credit\n**Weekly:** £98.75\n**Next payment:** 18 April\n\n✅ All good — you're in credit!",
+    reply: "💰 Your rent account:\n\n**Balance:** £125.50 in credit\n**Weekly:** £98.75\n**Next payment:** 25 May\n\n✅ All good — you're in credit!",
     quickReplies: ['Make payment', 'Payment history', 'Back to menu'],
   },
   track: {
@@ -66,7 +66,7 @@ const RESPONSES_CY: Record<string, { reply: string; quickReplies?: string[] }> =
     quickReplies: ['Atgyweiriad newydd', 'Tracio atgyweiriad', 'Diagnosio'],
   },
   rent: {
-    reply: "💰 Eich cyfrif rhent:\n\n**Balans:** £125.50 mewn credyd\n**Wythnosol:** £98.75\n**Taliad nesaf:** 18 Ebrill\n\n✅ Popeth yn iawn — rydych chi mewn credyd!",
+    reply: "💰 Eich cyfrif rhent:\n\n**Balans:** £125.50 mewn credyd\n**Wythnosol:** £98.75\n**Taliad nesaf:** 25 Mai\n\n✅ Popeth yn iawn — rydych chi mewn credyd!",
     quickReplies: ['Gwneud taliad', 'Hanes taliadau', 'Dewislen'],
   },
   track: {
@@ -166,14 +166,14 @@ export default function FloatingChat() {
       ? {
           id: '1',
           role: 'assistant' as const,
-          content: "Helo! 👋 Croeso i Bron Afon. Fi yw'ch cynorthwyydd AI. Sut alla i helpu heddiw?",
+          content: "Helo! 👋 Eich cynorthwyydd Hafan. Galla i helpu gydag atgyweiriadau, rhent a mwy — beth sy'n bod?",
           timestamp: new Date(),
           quickReplies: ['Adrodd atgyweiriad', 'Gwirio rhent', 'Siarad â rhywun'],
         }
       : {
           id: '1',
           role: 'assistant' as const,
-          content: "Helo! 👋 I'm your Hafan AI assistant. Ask me about repairs, rent, or anything else — I'm here to help.",
+          content: "Hi! 👋 I'm your Hafan assistant. I can help with repairs, rent and more — what's up?",
           timestamp: new Date(),
           quickReplies: ['Report a repair', 'Check my rent', 'Speak to someone'],
         };

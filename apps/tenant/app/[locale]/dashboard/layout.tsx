@@ -8,8 +8,11 @@ import {
   LogOut,
   Menu,
   Trophy,
-  Bell,
   Inbox,
+  Building2,
+  FileText,
+  MessageSquareWarning,
+  MoreHorizontal,
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 import { BronAfonLogo, BronAfonLogoCompact } from './bron-afon-logo';
@@ -26,7 +29,10 @@ function Sidebar() {
     { href: '/dashboard', label: t('home'), icon: Home },
     { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
-    { href: '/dashboard/inbox', label: 'Inbox', icon: Inbox },
+    { href: '/dashboard/my-home', label: t('myHome'), icon: Building2 },
+    { href: '/dashboard/tenancy', label: t('tenancy'), icon: FileText },
+    { href: '/dashboard/inbox', label: t('inbox'), icon: Inbox },
+    { href: '/dashboard/complaints', label: t('complaints'), icon: MessageSquareWarning },
     { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
     { href: '/dashboard/profile', label: t('profile'), icon: User },
     { href: '/dashboard/support', label: t('support'), icon: HelpCircle },
@@ -72,6 +78,9 @@ function Sidebar() {
             <p className="truncate text-xs text-muted-foreground">14 Heol y Castell</p>
           </div>
         </div>
+        <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground/60">
+          tenant v0.5.0
+        </p>
       </div>
     </aside>
   );
@@ -84,8 +93,8 @@ function MobileBottomNav() {
     { href: '/dashboard', label: t('home'), icon: Home },
     { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
     { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
-    { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
-    { href: '/dashboard/profile', label: t('profile'), icon: User },
+    { href: '/dashboard/my-home', label: t('myHome'), icon: Building2 },
+    { href: '/dashboard/tenancy', label: t('more'), icon: MoreHorizontal },
   ];
 
   return (
@@ -127,6 +136,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Menu className="h-5 w-5" />
             </button>
             <BronAfonLogoCompact />
+            <span className="font-mono text-[10px] text-muted-foreground/60">v0.5.0</span>
           </div>
 
           <div className="hidden lg:block" />

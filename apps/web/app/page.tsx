@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Wrench,
   PoundSterling,
-  MessageSquare,
   Globe,
   Shield,
   Smartphone,
@@ -19,9 +18,17 @@ import {
   Trophy,
   Camera,
   LayoutDashboard,
-  Send,
-  MapPin,
   Heart,
+  MessageSquareWarning,
+  ShieldAlert,
+  ArrowLeftRight,
+  Accessibility,
+  Building2,
+  ClipboardList,
+  CalendarDays,
+  Flame,
+  Home,
+  ShieldCheck,
 } from 'lucide-react';
 
 function HeroSection() {
@@ -287,11 +294,11 @@ function PlatformSection() {
             </div>
             <h3 className="text-xl font-bold text-foreground">Admin Dashboard</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Everything your staff need — real-time metrics, repair management,
-              tenant insights, and CX analytics at a glance.
+              Casework queues, planned works management, CX analytics and live
+              repair tracking — everything your staff need to action what tenants raise.
             </p>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              {['Real-time dashboards', 'Repair management', 'Tenant profiles', 'CX analytics'].map((item) => (
+              {['Casework: complaints, ASB, safeguarding', 'Log on behalf of tenant (offline)', 'Planned works management', 'CX analytics with SLAs'].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-blue-600" />
                   {item}
@@ -330,11 +337,14 @@ function FeaturesGrid() {
     { icon: Wrench, title: 'Live Repair Tracking', description: "Domino's-style live tracking keeps tenants informed from report to completion.", color: 'bg-blue-500' },
     { icon: Bot, title: 'AI-Powered Support', description: '24/7 intelligent chatbot handles common queries with seamless human escalation.', color: 'bg-purple-500' },
     { icon: Camera, title: 'AI Diagnostics', description: 'Tenants upload photos — AI identifies issues and suggests fixes, reducing callouts.', color: 'bg-pink-500' },
-    { icon: PoundSterling, title: 'Smart Rent Management', description: 'View balances, set up direct debits, and make payments — from any device.', color: 'bg-green-500' },
-    { icon: Globe, title: 'Bilingual by Design', description: 'Full Welsh (Cymraeg) support throughout. One toggle switches everything.', color: 'bg-red-500' },
-    { icon: Smartphone, title: 'Works Everywhere', description: 'Beautiful responsive web plus native iOS and Android from a single codebase.', color: 'bg-indigo-500' },
-    { icon: Shield, title: 'WCAG 2.1 AA', description: 'Accessibility built in from day one. Not bolted on as an afterthought.', color: 'bg-emerald-500' },
-    { icon: BarChart3, title: 'Admin Analytics', description: 'Real-time CX metrics, repair analytics, and tenant insights at a glance.', color: 'bg-cyan-500' },
+    { icon: Flame, title: 'Compliance Built In', description: 'Gas safety, boiler service, EICR and smoke alarms — all tracked with proactive booking.', color: 'bg-orange-500' },
+    { icon: PoundSterling, title: 'Smart Rent Management', description: 'View balances, set up direct debits, manage arrears, query service charges and recharges.', color: 'bg-green-500' },
+    { icon: MessageSquareWarning, title: 'Complaints & Feedback', description: 'Structured complaints with SLAs and post-works star feedback — online or recorded by staff.', color: 'bg-rose-500' },
+    { icon: ShieldAlert, title: 'Safeguarding & ASB', description: 'Confidential safeguarding referrals and anti-social behaviour reports, triaged by your staff.', color: 'bg-red-500' },
+    { icon: Accessibility, title: 'Adaptations Pathway', description: 'Tenants request adaptations and progress through OT assessment to install — all visible.', color: 'bg-purple-500' },
+    { icon: ArrowLeftRight, title: 'Mutual Exchange', description: 'Inspection, tenancy checks and decision — applications tracked end-to-end.', color: 'bg-indigo-500' },
+    { icon: CalendarDays, title: 'Planned Works Visibility', description: 'Every tenant sees what is coming for their home and area, with subscribe-to-updates.', color: 'bg-cyan-500' },
+    { icon: Globe, title: 'Bilingual by Design', description: 'Full Welsh (Cymraeg) support throughout. One toggle switches everything.', color: 'bg-emerald-500' },
     { icon: Trophy, title: 'Gamification', description: 'Points, badges, and streaks reward positive tenant behaviours and engagement.', color: 'bg-amber-500' },
   ];
 
@@ -478,12 +488,89 @@ function CTASection() {
   );
 }
 
+function JourneysSection() {
+  const journeys = [
+    {
+      icon: Wrench,
+      title: 'Repairs & maintenance',
+      stories: 'Report, book and track repairs · change appointments · compliance checks (gas, boiler) · communal repairs',
+      color: 'from-blue-500 to-blue-600',
+    },
+    {
+      icon: PoundSterling,
+      title: 'Rent & charges',
+      stories: 'Pay rent · manage arrears · service charges · recharges · raise queries · payment plans',
+      color: 'from-green-500 to-emerald-600',
+    },
+    {
+      icon: Home,
+      title: 'My home & property',
+      stories: 'Planned works timeline · adaptations · property condition · communal · new build defects · voids reports',
+      color: 'from-indigo-500 to-indigo-600',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Tenancy management',
+      stories: 'Update details · safeguarding concerns · ASB · mutual exchange · pre-tenancy · ending tenancy',
+      color: 'from-slate-500 to-slate-700',
+    },
+    {
+      icon: Building2,
+      title: 'Commercial & leasehold',
+      stories: 'View and manage contracts · schedule notifications · communal works affecting your area',
+      color: 'from-purple-500 to-purple-600',
+    },
+    {
+      icon: MessageSquareWarning,
+      title: 'Complaints & feedback',
+      stories: 'Online or staff-recorded complaints · planned works feedback · star-rating completed work',
+      color: 'from-rose-500 to-pink-600',
+    },
+  ];
+
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/20 py-28">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-700">
+            <ClipboardList className="h-3 w-3" />
+            End-to-end coverage
+          </span>
+          <h2 className="mt-4 text-3xl font-bold text-foreground lg:text-4xl">
+            Built around the journeys that matter
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Shaped by tenant workshops, every customer journey is covered — from the first
+            repair report to ending a tenancy.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {journeys.map((j) => (
+            <div
+              key={j.title}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary-300 hover:shadow-lg"
+            >
+              <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${j.color} shadow-sm`}>
+                <j.icon className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="mt-4 text-lg font-bold text-card-foreground">{j.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{j.stories}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
       <HeroSection />
       <StatsSection />
       <PlatformSection />
+      <JourneysSection />
       <FeaturesGrid />
       <TestimonialSection />
       <CTASection />
