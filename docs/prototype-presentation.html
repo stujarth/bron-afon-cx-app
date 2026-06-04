@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Hafan — Bron Afon CX Prototype</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+<style>
+  :root {
+    --brand: #0e7c66;
+    --brand-dark: #0a5f4e;
+    --brand-soft: #d6f0e8;
+    --ink: #0f172a;
+    --muted: #475569;
+    --accent: #d97706;
+    --rose: #be123c;
+  }
+  .reveal { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--ink); }
+  .reveal h1, .reveal h2, .reveal h3 { font-family: inherit; color: var(--ink); text-transform: none; letter-spacing: -0.01em; }
+  .reveal h1 { font-size: 2.4em; font-weight: 800; }
+  .reveal h2 { font-size: 1.6em; font-weight: 700; }
+  .reveal h3 { font-size: 1.1em; font-weight: 600; color: var(--brand-dark); }
+  .reveal .slides section { text-align: left; }
+  .reveal .slides section.center { text-align: center; }
+  .reveal .eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.6em;
+    font-weight: 700;
+    color: var(--brand);
+    background: var(--brand-soft);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 0.6em;
+  }
+  .reveal a { color: var(--brand); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .reveal a:hover { color: var(--brand-dark); }
+  .reveal ul, .reveal ol { display: block; }
+  .reveal li { margin: 0.25em 0; }
+  .reveal code { font-family: 'JetBrains Mono', ui-monospace, monospace; background: #f1f5f9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1em; }
+  .stat { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1em 1.2em; }
+  .stat .num { font-size: 2.4em; font-weight: 800; color: var(--brand); line-height: 1; }
+  .stat .label { color: var(--muted); font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.4em; }
+  .pill { display: inline-block; background: var(--brand-soft); color: var(--brand-dark); padding: 2px 10px; border-radius: 999px; font-size: 0.65em; font-weight: 600; margin: 2px; }
+  .pill.warn { background: #fef3c7; color: #92400e; }
+  .pill.rose { background: #ffe4e6; color: var(--rose); }
+  .map-row { display: grid; grid-template-columns: 170px 1fr 100px; gap: 1em; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+  .map-row:last-child { border-bottom: 0; }
+  .map-row .journey { font-weight: 700; color: var(--brand-dark); }
+  .map-row .stories { font-size: 0.7em; color: var(--muted); line-height: 1.5; }
+  .map-row .count { text-align: right; font-weight: 800; color: var(--brand); }
+  .story-card { background: white; border: 1px solid #e2e8f0; border-left: 4px solid var(--brand); border-radius: 10px; padding: 0.8em 1em; font-size: 0.6em; }
+  .story-card .story-title { font-weight: 700; color: var(--ink); display: block; }
+  .story-card .where { display: block; color: var(--muted); margin-top: 4px; font-size: 0.9em; }
+  .check { color: var(--brand); font-weight: 700; }
+  .footer-note { position: absolute; bottom: 20px; left: 60px; right: 60px; font-size: 0.45em; color: var(--muted); display: flex; justify-content: space-between; }
+  .reveal .slide-number { color: var(--muted); }
+  .url-box {
+    background: var(--brand);
+    color: white;
+    border-radius: 14px;
+    padding: 1em 1.2em;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    line-height: 1.8;
+  }
+  .url-box .label { display: block; font-size: 0.7em; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5em; }
+  .url-box a { color: white; border-bottom-color: rgba(255,255,255,0.4); }
+  .lead { font-size: 1.05em; color: var(--muted); line-height: 1.5; }
+  .swatch { width: 14px; height: 14px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 6px; }
+  .reveal .progress { color: var(--brand); }
+  table.coverage { width: 100%; font-size: 0.55em; border-collapse: collapse; }
+  table.coverage th { text-align: left; padding: 8px 6px; border-bottom: 2px solid var(--brand); color: var(--brand-dark); }
+  table.coverage td { padding: 6px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  table.coverage tr td:first-child { font-weight: 700; color: var(--ink); width: 36%; }
+  table.coverage tr td:last-child { color: var(--muted); }
+  .reveal section.title-slide { text-align: center; }
+  .reveal section.title-slide h1 { font-size: 3em; margin-bottom: 0.2em; }
+  .reveal section.title-slide .lead { font-size: 1.15em; }
+  .reveal section.title-slide .meta { margin-top: 2em; color: var(--muted); font-size: 0.6em; letter-spacing: 0.08em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- 1: Title -->
+<section class="title-slide center">
+  <span class="eyebrow">Customer Experience Prototype</span>
+  <h1>Hafan</h1>
+  <p class="lead">A working prototype of the Bron Afon tenant experience — built against Evan's 30 user stories.</p>
+  <div class="meta">v0.5.0 · live at bron-afon-cx-app-tenant.vercel.app</div>
+</section>
+
+<!-- 2: The brief -->
+<section>
+  <span class="eyebrow">The Brief</span>
+  <h2>Evan gave us 30 user stories across 7 customer journeys</h2>
+  <div class="grid-3" style="margin-top: 0.8em;">
+    <div class="stat"><div class="num">30</div><div class="label">User stories</div></div>
+    <div class="stat"><div class="num">7</div><div class="label">Journey areas</div></div>
+    <div class="stat"><div class="num">100%</div><div class="label">Represented in prototype</div></div>
+  </div>
+  <div style="margin-top: 1.2em; font-size: 0.7em; line-height: 1.7;">
+    <span class="pill">Repairs · 6</span>
+    <span class="pill">Rents · 7</span>
+    <span class="pill">Tenancy Management · 4</span>
+    <span class="pill">Property · 2</span>
+    <span class="pill">New Homes · 5</span>
+    <span class="pill">Commercial + Leasehold · 3</span>
+    <span class="pill">Complaints · 3</span>
+  </div>
+  <p style="margin-top: 1.5em; font-size: 0.7em; color: var(--muted);">
+    Source: <code>Customer_Experience_User_Stories.xlsx</code> — every "As a customer, I want…" maps to a screen we can demo today.
+  </p>
+</section>
+
+<!-- 3: What we built -->
+<section>
+  <span class="eyebrow">What's Built</span>
+  <h2>Three working apps, deployed and demo-ready</h2>
+  <div class="grid-3" style="margin-top: 0.8em; font-size: 0.7em;">
+    <div class="stat">
+      <h3>Tenant portal</h3>
+      <p style="margin: 0.4em 0; color: var(--muted);">Self-service for residents. Welsh + English. AI-assisted.</p>
+      <code style="font-size: 0.8em;">bron-afon-cx-app-tenant.vercel.app</code>
+    </div>
+    <div class="stat">
+      <h3>Admin console</h3>
+      <p style="margin: 0.4em 0; color: var(--muted);">Staff dashboard for cases, repairs, planned works, feedback.</p>
+      <code style="font-size: 0.8em;">bron-afon-cx-app-admin.vercel.app</code>
+    </div>
+    <div class="stat">
+      <h3>Marketing site</h3>
+      <p style="margin: 0.4em 0; color: var(--muted);">Outward-facing pitch with live links into the apps.</p>
+      <code style="font-size: 0.8em;">bron-afon-cx-app-web.vercel.app</code>
+    </div>
+  </div>
+  <p style="margin-top: 1.4em; font-size: 0.7em; color: var(--muted);">
+    Built on Next.js + Tailwind, fully bilingual, accessible, deployed continuously to Vercel. Currently at <strong>v0.5.0</strong>.
+  </p>
+</section>
+
+<!-- 4: Coverage matrix -->
+<section>
+  <span class="eyebrow">Mapped to the Brief</span>
+  <h2>Every user story has a home in the prototype</h2>
+  <div class="map-row"><span class="journey">Repairs</span><span class="stories">Report · Change appointment · Basic · Complex · Boiler · Gas</span><span class="count">6 / 6</span></div>
+  <div class="map-row"><span class="journey">Rents</span><span class="stories">Arrears · Service charges · Pay recharges · Query rent · Pay rent · Query recharge · Property conditions</span><span class="count">7 / 7</span></div>
+  <div class="map-row"><span class="journey">Tenancy Management</span><span class="stories">Safeguarding · Personal info · Mutual exchange · ASB</span><span class="count">4 / 4</span></div>
+  <div class="map-row"><span class="journey">Property</span><span class="stories">Adaptations · Planned works timeline</span><span class="count">2 / 2</span></div>
+  <div class="map-row"><span class="journey">New Homes</span><span class="stories">New build defects · Voids report · Ending tenancy · Pre-tenancy · Starting tenancy</span><span class="count">5 / 5</span></div>
+  <div class="map-row"><span class="journey">Commercial + Leasehold</span><span class="stories">Schedule notifications · Contracts · Communal repairs</span><span class="count">3 / 3</span></div>
+  <div class="map-row"><span class="journey">Complaints</span><span class="stories">Online complaint · Offline complaint · Planned-works feedback</span><span class="count">3 / 3</span></div>
+</section>
+
+<!-- 5: Repairs journey -->
+<section>
+  <span class="eyebrow">Journey 1 of 7 · 6 stories</span>
+  <h2>Repairs</h2>
+  <table class="coverage">
+    <tr><th>Evan's story</th><th>Where it lives in the prototype</th></tr>
+    <tr><td>Report a Repair</td><td>Tenant → Repairs → "Report new" — AI photo/video diagnostic, sticky category, success card with reference</td></tr>
+    <tr><td>Change a Repair Appointment Date</td><td>Tenant → Repairs → repair card → Reschedule — inline slot picker, confirmation</td></tr>
+    <tr><td>Book a Basic Repair</td><td>Standard form path with appointment slot auto-suggestion</td></tr>
+    <tr><td>Book a Complex Repair</td><td>Form routes to triage / assessment; admin Casework picks up complex jobs</td></tr>
+    <tr><td>Boiler Checks</td><td>Tenant → Repairs → Compliance card "Boiler service" with rebook flow</td></tr>
+    <tr><td>Gas Checks</td><td>Tenant → Repairs → Compliance card "Annual gas safety check" with rebook flow</td></tr>
+  </table>
+</section>
+
+<!-- 6: Rent journey -->
+<section>
+  <span class="eyebrow">Journey 2 of 7 · 7 stories</span>
+  <h2>Rents</h2>
+  <table class="coverage">
+    <tr><th>Evan's story</th><th>Where it lives in the prototype</th></tr>
+    <tr><td>Pay My Rent</td><td>Tenant → Rent → Balance — one-off payment modal with stored methods + DD setup</td></tr>
+    <tr><td>View and Manage Arrears</td><td>Demo-toggle between credit + arrears states; arrears card shows income officer, support card, payment plan CTA</td></tr>
+    <tr><td>View and Query Service Charges</td><td>Rent → Service charges tab — itemised breakdown, "Query" button per line</td></tr>
+    <tr><td>Make a Payment of Recharges</td><td>Rent → Recharges tab — outstanding total, pay button, status badges</td></tr>
+    <tr><td>Query a Recharge</td><td>Recharges tab → Query button per item, inline form, reference number returned</td></tr>
+    <tr><td>Query Rents</td><td>Rent → "Something not right?" card → routes to Inbox query thread</td></tr>
+    <tr><td>View Property Conditions</td><td>Tenant → My Home → Condition tab — gas, boiler, EICR, smoke alarms, damp inspections</td></tr>
+  </table>
+</section>
+
+<!-- 7: Tenancy + Property -->
+<section>
+  <span class="eyebrow">Journey 3 + 4 of 7 · 6 stories</span>
+  <h2>Tenancy Management &amp; Property</h2>
+  <table class="coverage">
+    <tr><th>Evan's story</th><th>Where it lives in the prototype</th></tr>
+    <tr><td>Update Personal Information</td><td>Tenant → Profile — inline Edit/Save on name, email, phone, address</td></tr>
+    <tr><td>Raise a Safeguarding Concern</td><td>Tenant → Tenancy → Safeguarding tile — confidential form, 999 prompt for immediate danger</td></tr>
+    <tr><td>Report Anti-Social Behaviour</td><td>Tenant → Tenancy → ASB — structured form with date/time/evidence + case reference</td></tr>
+    <tr><td>Request a Mutual Exchange</td><td>Tenant → Tenancy → Mutual exchange — multi-step application with progress tracker</td></tr>
+    <tr><td>View Property Adaptation Options</td><td>Tenant → My Home → Adaptations — common adaptations list, request flow, OT assessment pathway</td></tr>
+    <tr><td>View Planned Works Timeline</td><td>Tenant → My Home → Planned works — kitchen replacement, external painting, EV charging consultation</td></tr>
+  </table>
+</section>
+
+<!-- 8: New Homes -->
+<section>
+  <span class="eyebrow">Journey 5 of 7 · 5 stories</span>
+  <h2>New Homes</h2>
+  <table class="coverage">
+    <tr><th>Evan's story</th><th>Where it lives in the prototype</th></tr>
+    <tr><td>View New Build Repair Report</td><td>My Home → Defects tab — defect liability period tracker, log defect, view developer status</td></tr>
+    <tr><td>Submit a Voids Repair Report</td><td>My Home → Defects tab → "Voids inspection report" card</td></tr>
+    <tr><td>Manage Pre-Tenancy Steps</td><td>Tenancy → Starting Tenancy — pre-move-in checklist (forms, documents, ID)</td></tr>
+    <tr><td>Manage Starting New Tenancy</td><td>Tenancy → Starting Tenancy — digital agreement signing, welcome info, key contacts</td></tr>
+    <tr><td>Manage Ending Tenancy</td><td>Tenancy → Ending Tenancy — notice flow, key dates, obligations checklist, key return</td></tr>
+  </table>
+</section>
+
+<!-- 9: Commercial + Complaints -->
+<section>
+  <span class="eyebrow">Journey 6 + 7 of 7 · 6 stories</span>
+  <h2>Commercial / Leasehold &amp; Complaints</h2>
+  <table class="coverage">
+    <tr><th>Evan's story</th><th>Where it lives in the prototype</th></tr>
+    <tr><td>View Communal Repair Status</td><td>My Home → Communal tab — area-level status, scheduled grounds maintenance, "report communal issue" CTA</td></tr>
+    <tr><td>View and Manage Contracts</td><td>Tenancy → Contracts &amp; documents — download, query routing to admin</td></tr>
+    <tr><td>View Schedule Notifications</td><td>Notification bell + Inbox — per-channel preferences set on Profile</td></tr>
+    <tr><td>Submit an Online Complaint</td><td>Tenant → Complaints — structured form with category, channel preference, reference number</td></tr>
+    <tr><td>Submit an Offline Complaint</td><td>Admin → Casework → "Log on behalf of tenant" — phone/letter/in-person modal with acknowledgement method</td></tr>
+    <tr><td>Respond to planned feedback</td><td>Tenant: star rating on completed works · Admin → Feedback page to view + respond</td></tr>
+  </table>
+</section>
+
+<!-- 10: Beyond the brief -->
+<section>
+  <span class="eyebrow">Above &amp; Beyond</span>
+  <h2>What we added on top of the brief</h2>
+  <div class="grid-2" style="margin-top: 0.6em; font-size: 0.7em;">
+    <div>
+      <h3>For tenants</h3>
+      <ul style="line-height: 1.5;">
+        <li>🤖 <strong>AI diagnostic</strong> — photo/video upload, identifies issue, suggests fixes, books right trade</li>
+        <li>💬 <strong>Floating Hafan AI</strong> — context-aware chatbot on every page, bilingual</li>
+        <li>🏆 <strong>Rewards &amp; gamification</strong> — points for engagement, badges, community draws</li>
+        <li>♿ <strong>Accessibility toolbar</strong> — text size, high contrast, reduce motion (persisted)</li>
+        <li>🏴󠁧󠁢󠁷󠁬󠁳󠁿 <strong>Full Welsh language</strong> — every screen, every micro-copy</li>
+      </ul>
+    </div>
+    <div>
+      <h3>For staff</h3>
+      <ul style="line-height: 1.5;">
+        <li>📋 <strong>Unified casework queue</strong> — complaints, ASB, safeguarding, mutual exchange, adaptations</li>
+        <li>⏱️ <strong>SLA tracking + risk chips</strong> on every case</li>
+        <li>📞 <strong>Log on behalf of tenant</strong> — captures offline channels</li>
+        <li>📅 <strong>Planned works management</strong> — programme builder with tenant-visibility toggle</li>
+        <li>📊 <strong>Feedback dashboard</strong> — respond to ratings on completed works</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 11: Try it -->
+<section>
+  <span class="eyebrow">Try It / Demo</span>
+  <h2>Open the prototype</h2>
+  <div class="grid-2" style="margin-top: 1em;">
+    <div class="url-box">
+      <span class="label">Tenant portal</span>
+      <a href="https://bron-afon-cx-app-tenant.vercel.app">bron-afon-cx-app-tenant.vercel.app</a>
+      <p style="margin: 0.6em 0 0 0; font-size: 0.85em; opacity: 0.85;">Try: report a repair, switch to Cymraeg, ask Hafan AI a question, open the rewards page</p>
+    </div>
+    <div class="url-box">
+      <span class="label">Admin console</span>
+      <a href="https://bron-afon-cx-app-admin.vercel.app">bron-afon-cx-app-admin.vercel.app</a>
+      <p style="margin: 0.6em 0 0 0; font-size: 0.85em; opacity: 0.85;">Try: open Casework, log a complaint on behalf of a tenant, view the feedback queue</p>
+    </div>
+  </div>
+  <p style="margin-top: 1.5em; font-size: 0.7em; color: var(--muted);">
+    Prototype data is illustrative — no live tenant records. Welsh and English fully supported on the tenant portal.
+  </p>
+</section>
+
+<!-- 12: Next -->
+<section>
+  <span class="eyebrow">Next</span>
+  <h2>What we'd validate next</h2>
+  <ul style="font-size: 0.75em; line-height: 1.7;">
+    <li><strong>Real tenant testing</strong> — invite a small cohort to use it for a week and gather qualitative feedback against the same 30 stories</li>
+    <li><strong>Integration spike</strong> — pick the highest-value integration (repairs system? rent ledger?) and prove the data flow end-to-end</li>
+    <li><strong>Accessibility audit</strong> — formal WCAG 2.1 AA pass with NVDA + keyboard walkthrough</li>
+    <li><strong>Welsh language review</strong> — native-speaker copy-check on the translations we've drafted</li>
+    <li><strong>Branding pass</strong> — apply Bron Afon's house style (logo, colour, typography) once approved</li>
+  </ul>
+  <p style="margin-top: 1.4em; font-size: 0.7em; color: var(--muted);">
+    The current prototype is a credible "v1 design" — not production code. Standing this up for real tenants is a separate, scoped build.
+  </p>
+</section>
+
+<!-- 13: Thanks -->
+<section class="center">
+  <span class="eyebrow">Thanks</span>
+  <h1 style="margin-top: 0.3em;">Let's open it up.</h1>
+  <p class="lead" style="margin-top: 1em;">Questions, walkthroughs, or "what about…" — easiest if we drive the prototype together.</p>
+  <div style="margin-top: 2em; font-family: 'JetBrains Mono', monospace; font-size: 0.7em; color: var(--muted);">
+    bron-afon-cx-app-tenant.vercel.app
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    width: 1280,
+    height: 800,
+    margin: 0.08,
+    controls: true,
+    progress: true,
+    center: false,
+  });
+</script>
+</body>
+</html>
