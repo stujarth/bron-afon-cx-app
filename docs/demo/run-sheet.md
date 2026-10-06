@@ -69,6 +69,21 @@ The seed is deterministic: `supabase/scripts/generate-seed.mjs` generates 450 fi
 - **Repeat reports.** 43 homes have 3 or more reports. They are mostly solid-wall or system-built, with penetrating damp and rising damp the most expensive root causes. This supports the argument for planned fabric investment instead of repeated reactive treatment.
 - **Phone vs portal.** Phone-reported cases breach their deadline about 34% of the time, against about 24% for portal reports. This is a channel-shift argument for the new form.
 
+### Dry-run results (6 Oct 2026, against `bron-afon-demo`)
+
+Prompts 2–4 were dry-run against the live database. The answers Claude should arrive at:
+
+| Question | Answer |
+|---|---|
+| Total reports / missed deadlines | 450 / 131 (29%); last 12 months 30%, prior 12 months 28%, so no improvement |
+| Winter (Dec–Feb) | 103 of the 131 misses; 54% missed in Dec–Feb vs 11% the rest of the year |
+| Trevethin + Blaenavon | 55% of reports, 73% of misses, 60% of the £786k spend |
+| Homes with 3+ reports | 43 homes, 169 reports, £302k; £7,027 per home vs £1,600 for homes fixed first time |
+| Costliest causes | Rising damp ~£5,100/job, penetrating damp ~£3,900, condensation ~£800 |
+| Emergencies | 39, of which 5 missed the 24h deadline, all in Dec–Feb |
+
+Backup board report (prompt 4 fallback): https://claude.ai/artifact/HhCBWjjMjhdwe8CZXmSC3k. It's private; share it from its Share menu if anyone else needs it.
+
 ## Fallbacks
 
 | If… | Do this |
@@ -77,7 +92,7 @@ The seed is deterministic: `supabase/scripts/generate-seed.mjs` generates 450 fi
 | CI still running | Show the last green run on the PR's Checks tab |
 | Vercel build slow | Use the PR preview URL; it's the same build |
 | Form submit fails (Supabase down) | The form shows a friendly error with the phone number, which is a good accessibility talking point. Then show `screenshots/after-damp-done-desktop.png` |
-| Claude query slow or wrong | Open the pre-generated report artifact |
+| Claude query slow or wrong | Open the [pre-generated board report](https://claude.ai/artifact/HhCBWjjMjhdwe8CZXmSC3k) |
 
 ## Reset after the talk
 
