@@ -20,7 +20,9 @@
     "notifications": "Notifications",
     "welcomeMessage": "Welcome to Bron Afon",
     "yourHome": "Your home, your way",
-    "communityHousing": "Community Housing"
+    "communityHousing": "Community Housing",
+    "emergencyStrip": "Emergency repair? Call us any time on",
+    "gasLeak": "Smell gas? Call"
   },
   "nav": {
     "home": "Home",
@@ -34,7 +36,11 @@
     "settings": "Settings",
     "rewards": "Rewards",
     "inbox": "Inbox",
-    "more": "More"
+    "more": "More",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "close": "Close",
+    "openMenu": "Open menu"
   },
   "dashboard": {
     "welcome": "Welcome back, {name}",
@@ -61,7 +67,12 @@
     "stepOf": "Step {current} of {total}",
     "etaToday": "ETA: {time} today",
     "onTheWay": "On the way",
-    "viewDetails": "View details"
+    "viewDetails": "View details",
+    "whatToDo": "What would you like to do?",
+    "dampTitle": "Report damp or mould",
+    "dampDesc": "Tell us in 2 minutes. We'll tell you exactly when we'll inspect.",
+    "yourVoice": "Your voice",
+    "yourVoiceDesc": "Complaints, compliments and feedback"
   },
   "rewards": {
     "title": "Rewards & Achievements",
@@ -121,7 +132,10 @@
       "titlePlaceholder": "e.g. Leaking tap in kitchen",
       "descriptionPlaceholder": "Please describe the issue in detail...",
       "chooseFiles": "Choose files",
-      "orFillIn": "or fill in the form below"
+      "orFillIn": "or fill in the form below",
+      "backToRepairs": "Back to repairs",
+      "dampCallout": "Damp or mould in your home?",
+      "dampCalloutLink": "Use our quick damp and mould form"
     },
     "tracker": {
       "title": "Repair Progress",
@@ -235,5 +249,14 @@
     "quickFixes": "Try these quick fixes first",
     "stillNeedHelp": "Still need help?",
     "bookEngineer": "Book a {trade}"
+  },
+  "footer": {
+    "mission": "We believe everyone should have a place they are proud to call home.",
+    "contactUs": "Contact us",
+    "repairsLine": "Repairs",
+    "outOfHours": "Outside office hours, calls go to our Out of Hours service.",
+    "usefulLinks": "Useful links",
+    "repairsGuide": "Repairs with Bron Afon",
+    "legal": "Bron Afon Community Housing Limited is a registered society (No. 30235R) and a Registered Social Landlord with the Welsh Government (No. L147). Concept prototype for demonstration."
   }
 }

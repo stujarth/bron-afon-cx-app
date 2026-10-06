@@ -15,8 +15,26 @@
     font-family: var(--font-sans);
   }
 
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+  }
+
+  /* High-visibility focus ring (GOV.UK style): yellow halo + navy outline */
   :focus-visible {
-    outline: 2px solid var(--color-ring);
+    outline: 3px solid var(--color-navy-900);
     outline-offset: 2px;
+    box-shadow: 0 0 0 6px #ffdd00;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

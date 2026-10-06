@@ -20,7 +20,9 @@
     "notifications": "Hysbysiadau",
     "welcomeMessage": "Croeso i Bron Afon",
     "yourHome": "Eich cartref, eich ffordd",
-    "communityHousing": "Tai Cymunedol"
+    "communityHousing": "Tai Cymunedol",
+    "emergencyStrip": "Atgyweiriad brys? Ffoniwch ni unrhyw bryd ar",
+    "gasLeak": "Arogli nwy? Ffoniwch"
   },
   "nav": {
     "home": "Hafan",
@@ -34,7 +36,11 @@
     "settings": "Gosodiadau",
     "rewards": "Gwobrau",
     "inbox": "Mewnflwch",
-    "more": "Mwy"
+    "more": "Mwy",
+    "mainNav": "Prif lywio",
+    "mobileNav": "Llywio symudol",
+    "close": "Cau",
+    "openMenu": "Agor y ddewislen"
   },
   "dashboard": {
     "welcome": "Croeso yn ôl, {name}",
@@ -61,7 +67,12 @@
     "stepOf": "Cam {current} o {total}",
     "etaToday": "Cyrraedd: {time} heddiw",
     "onTheWay": "Ar y ffordd",
-    "viewDetails": "Gweld y manylion"
+    "viewDetails": "Gweld y manylion",
+    "whatToDo": "Beth hoffech chi ei wneud?",
+    "dampTitle": "Rhoi gwybod am leithder neu lwydni",
+    "dampDesc": "Dywedwch wrthym mewn 2 funud. Byddwn yn dweud wrthych yn union pryd y byddwn yn archwilio.",
+    "yourVoice": "Eich llais",
+    "yourVoiceDesc": "Cwynion, canmoliaeth ac adborth"
   },
   "rewards": {
     "title": "Gwobrau a Chyflawniadau",
@@ -121,7 +132,10 @@
       "titlePlaceholder": "e.e. Tap yn gollwng yn y gegin",
       "descriptionPlaceholder": "Disgrifiwch y broblem yn fanwl...",
       "chooseFiles": "Dewis ffeiliau",
-      "orFillIn": "neu llenwch y ffurflen isod"
+      "orFillIn": "neu llenwch y ffurflen isod",
+      "backToRepairs": "Yn ôl i atgyweiriadau",
+      "dampCallout": "Lleithder neu lwydni yn eich cartref?",
+      "dampCalloutLink": "Defnyddiwch ein ffurflen gyflym ar gyfer lleithder a llwydni"
     },
     "tracker": {
       "title": "Cynnydd yr Atgyweiriad",
@@ -235,5 +249,14 @@
     "quickFixes": "Rhowch gynnig ar y rhain yn gyntaf",
     "stillNeedHelp": "Dal angen cymorth?",
     "bookEngineer": "Archebu {trade}"
+  },
+  "footer": {
+    "mission": "Credwn y dylai pawb gael lle y maen nhw'n falch o'i alw'n gartref.",
+    "contactUs": "Cysylltu â ni",
+    "repairsLine": "Atgyweiriadau",
+    "outOfHours": "Y tu allan i oriau swyddfa, bydd galwadau'n mynd i'n gwasanaeth Y Tu Allan i Oriau.",
+    "usefulLinks": "Dolenni defnyddiol",
+    "repairsGuide": "Atgyweiriadau gyda Bron Afon",
+    "legal": "Mae Bron Afon Community Housing Limited yn gymdeithas gofrestredig (Rhif 30235R) ac yn Landlord Cymdeithasol Cofrestredig gyda Llywodraeth Cymru (Rhif L147). Prototeip cysyniadol at ddibenion arddangos."
   }
 }

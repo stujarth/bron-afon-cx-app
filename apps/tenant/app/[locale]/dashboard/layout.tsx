@@ -1,76 +1,26 @@
 import { useTranslations } from 'next-intl';
-import {
-  Home,
-  Wrench,
-  PoundSterling,
-  User,
-  HelpCircle,
-  LogOut,
-  Menu,
-  Trophy,
-  Inbox,
-  Building2,
-  FileText,
-  MessageSquareWarning,
-  MoreHorizontal,
-} from 'lucide-react';
-import { Link } from '../../../i18n/navigation';
+import { LogOut, Phone } from 'lucide-react';
 import { BronAfonLogo, BronAfonLogoCompact } from './bron-afon-logo';
 import { LanguageSwitcher } from './language-switcher';
 import FloatingChat from './floating-chat';
 import NotificationBell from './notification-bell';
 import AccessibilityToolbar from './accessibility-toolbar';
+import { MobileBottomNav, MobileMenuButton, SidebarNav } from './nav';
+
+const REPAIRS_PHONE = '01633 620111';
 
 function Sidebar() {
-  const t = useTranslations('nav');
-  const tCommon = useTranslations('common');
-
-  const navItems = [
-    { href: '/dashboard', label: t('home'), icon: Home },
-    { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
-    { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
-    { href: '/dashboard/my-home', label: t('myHome'), icon: Building2 },
-    { href: '/dashboard/tenancy', label: t('tenancy'), icon: FileText },
-    { href: '/dashboard/inbox', label: t('inbox'), icon: Inbox },
-    { href: '/dashboard/complaints', label: t('complaints'), icon: MessageSquareWarning },
-    { href: '/dashboard/rewards', label: t('rewards'), icon: Trophy },
-    { href: '/dashboard/profile', label: t('profile'), icon: User },
-    { href: '/dashboard/support', label: t('support'), icon: HelpCircle },
-  ];
-
   return (
-    <aside className="hidden w-64 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
+    <aside className="sticky top-0 hidden h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
       <div className="flex h-20 items-center border-b border-sidebar-border px-5">
         <BronAfonLogo />
       </div>
 
-      <nav className="flex-1 p-4" aria-label="Main navigation">
-        <ul className="space-y-0.5">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-foreground transition-all hover:bg-sidebar-accent"
-              >
-                <item.icon
-                  className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary-600"
-                  aria-hidden="true"
-                />
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-8 rounded-xl border border-primary-100 bg-gradient-to-br from-primary-50 to-primary-100/50 p-4">
-          <p className="text-xs font-medium text-primary-700">{tCommon('welcomeMessage')}</p>
-          <p className="mt-0.5 text-xs text-primary-600/80">{tCommon('yourHome')}</p>
-        </div>
-      </nav>
+      <SidebarNav />
 
       <div className="border-t border-sidebar-border p-4">
-        <div className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-sidebar-accent">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700 ring-2 ring-primary-50">
+        <div className="flex items-center gap-3 rounded-lg p-2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-800">
             SW
           </div>
           <div className="flex-1 truncate">
@@ -78,7 +28,7 @@ function Sidebar() {
             <p className="truncate text-xs text-muted-foreground">14 Heol y Castell</p>
           </div>
         </div>
-        <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground/60">
+        <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground">
           tenant v0.5.0
         </p>
       </div>
@@ -86,36 +36,68 @@ function Sidebar() {
   );
 }
 
-function MobileBottomNav() {
-  const t = useTranslations('nav');
-
-  const navItems = [
-    { href: '/dashboard', label: t('home'), icon: Home },
-    { href: '/dashboard/repairs', label: t('repairs'), icon: Wrench },
-    { href: '/dashboard/rent', label: t('rent'), icon: PoundSterling },
-    { href: '/dashboard/my-home', label: t('myHome'), icon: Building2 },
-    { href: '/dashboard/tenancy', label: t('more'), icon: MoreHorizontal },
-  ];
-
+function EmergencyStrip() {
+  const t = useTranslations('common');
   return (
-    <nav
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 backdrop-blur-md lg:hidden"
-      aria-label="Mobile navigation"
-    >
-      <ul className="flex items-center justify-around">
-        {navItems.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              className="flex flex-col items-center gap-1 px-3 py-2.5 text-[10px] font-medium text-muted-foreground transition-colors hover:text-primary-600"
-            >
-              <item.icon className="h-5 w-5" aria-hidden="true" />
-              <span>{item.label}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="bg-navy-900 px-4 py-2 text-sm text-white lg:px-8">
+      <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <Phone className="h-4 w-4 shrink-0 text-primary-300" aria-hidden="true" />
+        <span>{t('emergencyStrip')}</span>
+        <a
+          href={`tel:${REPAIRS_PHONE.replace(/\s/g, '')}`}
+          className="font-bold underline underline-offset-2 hover:no-underline"
+        >
+          {REPAIRS_PHONE}
+        </a>
+        <span className="text-white/80">·</span>
+        <span>{t('gasLeak')}</span>
+        <a href="tel:0800111999" className="font-bold underline underline-offset-2 hover:no-underline">
+          0800 111 999
+        </a>
+      </p>
+    </div>
+  );
+}
+
+function SiteFooter() {
+  const t = useTranslations('footer');
+  return (
+    <footer className="mt-12 bg-navy-900 px-4 pb-28 pt-10 text-sm text-white/90 lg:px-8 lg:pb-10">
+      <div className="grid gap-8 md:grid-cols-3">
+        <div className="space-y-3">
+          <BronAfonLogo variant="white" />
+          <p className="max-w-xs text-white/80">{t('mission')}</p>
+        </div>
+        <div>
+          <h2 className="mb-3 text-base font-bold text-white">{t('contactUs')}</h2>
+          <ul className="space-y-2">
+            <li>
+              {t('repairsLine')}:{' '}
+              <a href={`tel:${REPAIRS_PHONE.replace(/\s/g, '')}`} className="font-semibold underline">
+                {REPAIRS_PHONE}
+              </a>
+            </li>
+            <li>{t('outOfHours')}</li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="mb-3 text-base font-bold text-white">{t('usefulLinks')}</h2>
+          <ul className="space-y-2">
+            <li>
+              <a href="https://www.bronafon.org.uk/repairs-with-bron-afon/" className="underline hover:no-underline">
+                {t('repairsGuide')}
+              </a>
+            </li>
+            <li>
+              <a href="https://www.bronafon.org.uk/" className="underline hover:no-underline">
+                bronafon.org.uk
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p className="mt-8 border-t border-white/15 pt-6 text-xs text-white/70">{t('legal')}</p>
+    </footer>
   );
 }
 
@@ -126,22 +108,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="flex min-h-screen bg-background">
       <Sidebar />
 
-      <div className="flex flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-background/95 px-4 backdrop-blur-md lg:px-8">
-          <div className="flex items-center gap-3 lg:hidden">
-            <button
-              className="rounded-lg p-2 text-muted-foreground hover:bg-muted"
-              aria-label="Open menu"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
+      <div className="flex min-w-0 flex-1 flex-col">
+        <EmergencyStrip />
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-card/95 px-4 backdrop-blur-md lg:px-8">
+          <div className="flex min-w-0 items-center gap-1 lg:hidden">
+            <MobileMenuButton />
             <BronAfonLogoCompact />
-            <span className="font-mono text-[10px] text-muted-foreground/60">v0.5.0</span>
+            <span className="hidden font-mono text-[10px] text-muted-foreground sm:inline">v0.5.0</span>
           </div>
 
           <div className="hidden lg:block" />
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2">
             <LanguageSwitcher />
             <div className="relative">
               <AccessibilityToolbar />
@@ -157,9 +135,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </header>
 
-        <main id="main-content" className="flex-1 p-4 pb-24 lg:p-8 lg:pb-8">
+        <main id="main-content" tabIndex={-1} className="flex-1 p-4 lg:p-8">
           {children}
         </main>
+        <SiteFooter />
       </div>
 
       <MobileBottomNav />
