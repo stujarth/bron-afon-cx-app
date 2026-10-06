@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import turboPlugin from 'eslint-plugin-turbo';
 import tseslint from 'typescript-eslint';
-import nextPlugin from 'eslint-config-next';
 
 export default tseslint.config(
   js.configs.recommended,
