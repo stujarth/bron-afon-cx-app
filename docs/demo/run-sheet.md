@@ -12,8 +12,8 @@ Under 10 minutes. The demo shows an idea becoming a user story, then a ticket, t
 ## Pre-flight (the morning of the talk)
 
 - [ ] **Re-seed the data.**
-  - Supabase SQL editor (project `bron-afon-demo`): run `supabase/seed.sql`.
-  - Or ask Claude: *"Run supabase/seed.sql against bron-afon-demo"*.
+  - Supabase SQL editor (project `bron-afon-demo`): paste and run `supabase/reset-demo.sql` (a few lines). It removes any test reports, so the next one is `DM-2026-1149`, and drops the leftover staging table. It should report 450 rows.
+  - Only if the data looks wrong, run the full `supabase/seed.sql` instead.
 - [ ] **Check the deployed app.**
   - Vercel → tenant project → Settings → Environment Variables. `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` must be set for Production and Preview.
   - `DAMP_REPORTS_MOCK` must **not** be set there.
@@ -96,5 +96,5 @@ Backup board report (prompt 4 fallback): https://claude.ai/artifact/HhCBWjjMjhdw
 
 ## Reset after the talk
 
-- Re-run `supabase/seed.sql`. This clears demo submissions and resets the reference sequence.
+- Run `supabase/reset-demo.sql`. This clears demo submissions and resets the reference sequence.
 - Pause the `bron-afon-demo` Supabase project if you don't need it, to stop the Pro compute charge.
