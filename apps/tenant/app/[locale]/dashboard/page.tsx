@@ -8,12 +8,11 @@ import {
   Sparkles,
   Clock,
   Bell,
-  Building2,
   MessageSquareWarning,
   Star,
-  ShieldCheck,
   Flame,
   CalendarClock,
+  Droplets,
 } from 'lucide-react';
 import { Link } from '../../../i18n/navigation';
 
@@ -76,6 +75,7 @@ function GamificationBanner() {
               className="h-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 transition-all duration-1000"
               style={{ width: '75%' }}
               role="progressbar"
+              aria-label={tRewards('pointsToNext', { points: 50, level: tRewards('levelPlatinum') })}
               aria-valuenow={75}
               aria-valuemin={0}
               aria-valuemax={100}
@@ -169,36 +169,104 @@ function StatCard({
   );
 }
 
-function QuickActionCard({
+function TaskTile({
   href,
   icon: Icon,
   title,
   description,
-  color,
 }: {
   href: string;
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
-  color: string;
 }) {
   return (
     <Link
       href={href}
-      className="group flex items-start gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-primary-300 hover:shadow-md"
+      className="group flex min-h-28 flex-col justify-between rounded-2xl bg-card p-5 shadow-sm ring-1 ring-border transition-all hover:-translate-y-0.5 hover:shadow-md hover:ring-primary-300"
     >
-      <div className={`rounded-xl p-2.5 transition-transform group-hover:scale-110 ${color}`}>
-        <Icon className="h-5 w-5" aria-hidden="true" />
-      </div>
-      <div className="flex-1">
-        <h3 className="font-semibold text-card-foreground group-hover:text-primary-700">{title}</h3>
-        <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>
-      </div>
-      <ArrowRight
-        className="mt-1 h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary-600"
+      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-50 text-primary-600">
+        <Icon className="h-6 w-6" aria-hidden="true" />
+      </span>
+      <span className="mt-3 flex items-end justify-between gap-2">
+        <span>
+          <span className="block font-heading text-lg font-extrabold text-foreground group-hover:text-primary-700">
+            {title}
+          </span>
+          <span className="mt-0.5 block text-sm text-muted-foreground">{description}</span>
+        </span>
+        <ArrowRight
+          className="h-5 w-5 shrink-0 text-primary-600 transition-transform group-hover:translate-x-1"
+          aria-hidden="true"
+        />
+      </span>
+    </Link>
+  );
+}
+
+function DampMouldHero() {
+  const t = useTranslations('dashboard');
+  return (
+    <Link
+      href="/dashboard/repairs/damp-mould"
+      className="group relative block overflow-hidden rounded-2xl bg-navy-900 p-6 text-white shadow-md transition-shadow hover:shadow-lg"
+    >
+      <div
+        className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary-500/30 blur-2xl"
         aria-hidden="true"
       />
+      <div className="relative flex items-center gap-4">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary-500 text-navy-950">
+          <Droplets className="h-7 w-7" aria-hidden="true" />
+        </span>
+        <span className="flex-1">
+          <span className="block font-heading text-xl font-extrabold">{t('dampTitle')}</span>
+          <span className="mt-1 block text-sm text-white/85">{t('dampDesc')}</span>
+        </span>
+        <ArrowRight
+          className="h-6 w-6 shrink-0 text-primary-300 transition-transform group-hover:translate-x-1"
+          aria-hidden="true"
+        />
+      </div>
     </Link>
+  );
+}
+
+function TaskTiles() {
+  const t = useTranslations('dashboard');
+  return (
+    <section aria-labelledby="tasks-heading" className="space-y-3">
+      <h2 id="tasks-heading" className="text-lg font-bold text-foreground">
+        {t('whatToDo')}
+      </h2>
+      <DampMouldHero />
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <TaskTile
+          href="/dashboard/repairs/new"
+          icon={Wrench}
+          title={t('reportRepair')}
+          description={t('reportRepairDesc')}
+        />
+        <TaskTile
+          href="/dashboard/rent"
+          icon={PoundSterling}
+          title={t('payRent')}
+          description={t('payRentDesc')}
+        />
+        <TaskTile
+          href="/dashboard/complaints"
+          icon={MessageSquareWarning}
+          title={t('yourVoice')}
+          description={t('yourVoiceDesc')}
+        />
+        <TaskTile
+          href="/dashboard/support"
+          icon={HelpCircle}
+          title={t('getHelp')}
+          description={t('getHelpDesc')}
+        />
+      </div>
+    </section>
   );
 }
 
@@ -248,7 +316,7 @@ export default function DashboardPage() {
   return (
     <div className="mx-auto max-w-5xl space-y-6">
       <GreetingHeader />
-      <GamificationBanner />
+      <TaskTiles />
       <ActiveRepairCard />
 
       <section aria-label="Account summary">
@@ -288,53 +356,7 @@ export default function DashboardPage() {
 
       <UpcomingCompliance />
 
-      <section>
-        <h2 className="mb-3 text-sm font-semibold text-foreground">{t('quickActions')}</h2>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <QuickActionCard
-            href="/dashboard/repairs/new"
-            icon={Wrench}
-            title={t('reportRepair')}
-            description={t('reportRepairDesc')}
-            color="bg-blue-100 text-blue-700"
-          />
-          <QuickActionCard
-            href="/dashboard/rent"
-            icon={PoundSterling}
-            title={t('payRent')}
-            description={t('payRentDesc')}
-            color="bg-green-100 text-green-700"
-          />
-          <QuickActionCard
-            href="/dashboard/my-home"
-            icon={Building2}
-            title="My Home"
-            description="Planned works, adaptations, communal areas"
-            color="bg-indigo-100 text-indigo-700"
-          />
-          <QuickActionCard
-            href="/dashboard/tenancy"
-            icon={ShieldCheck}
-            title="Tenancy"
-            description="ASB, safeguarding, mutual exchange and more"
-            color="bg-slate-100 text-slate-700"
-          />
-          <QuickActionCard
-            href="/dashboard/complaints"
-            icon={MessageSquareWarning}
-            title="Complaints & feedback"
-            description="Make a complaint or share your experience"
-            color="bg-rose-100 text-rose-700"
-          />
-          <QuickActionCard
-            href="/dashboard/support"
-            icon={HelpCircle}
-            title={t('getHelp')}
-            description={t('getHelpDesc')}
-            color="bg-purple-100 text-purple-700"
-          />
-        </div>
-      </section>
+      <GamificationBanner />
 
       <RecentActivity />
     </div>

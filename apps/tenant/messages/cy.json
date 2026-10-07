@@ -20,7 +20,9 @@
     "notifications": "Hysbysiadau",
     "welcomeMessage": "Croeso i Bron Afon",
     "yourHome": "Eich cartref, eich ffordd",
-    "communityHousing": "Tai Cymunedol"
+    "communityHousing": "Tai Cymunedol",
+    "emergencyStrip": "Atgyweiriad brys? Ffoniwch ni unrhyw bryd ar",
+    "gasLeak": "Arogli nwy? Ffoniwch"
   },
   "nav": {
     "home": "Hafan",
@@ -34,7 +36,11 @@
     "settings": "Gosodiadau",
     "rewards": "Gwobrau",
     "inbox": "Mewnflwch",
-    "more": "Mwy"
+    "more": "Mwy",
+    "mainNav": "Prif lywio",
+    "mobileNav": "Llywio symudol",
+    "close": "Cau",
+    "openMenu": "Agor y ddewislen"
   },
   "dashboard": {
     "welcome": "Croeso yn ôl, {name}",
@@ -61,7 +67,12 @@
     "stepOf": "Cam {current} o {total}",
     "etaToday": "Cyrraedd: {time} heddiw",
     "onTheWay": "Ar y ffordd",
-    "viewDetails": "Gweld y manylion"
+    "viewDetails": "Gweld y manylion",
+    "whatToDo": "Beth hoffech chi ei wneud?",
+    "dampTitle": "Rhoi gwybod am leithder neu lwydni",
+    "dampDesc": "Dywedwch wrthym mewn 2 funud. Byddwn yn dweud wrthych yn union pryd y byddwn yn archwilio.",
+    "yourVoice": "Eich llais",
+    "yourVoiceDesc": "Cwynion, canmoliaeth ac adborth"
   },
   "rewards": {
     "title": "Gwobrau a Chyflawniadau",
@@ -121,7 +132,10 @@
       "titlePlaceholder": "e.e. Tap yn gollwng yn y gegin",
       "descriptionPlaceholder": "Disgrifiwch y broblem yn fanwl...",
       "chooseFiles": "Dewis ffeiliau",
-      "orFillIn": "neu llenwch y ffurflen isod"
+      "orFillIn": "neu llenwch y ffurflen isod",
+      "backToRepairs": "Yn ôl i atgyweiriadau",
+      "dampCallout": "Lleithder neu lwydni yn eich cartref?",
+      "dampCalloutLink": "Defnyddiwch ein ffurflen gyflym ar gyfer lleithder a llwydni"
     },
     "tracker": {
       "title": "Cynnydd yr Atgyweiriad",
@@ -235,5 +249,97 @@
     "quickFixes": "Rhowch gynnig ar y rhain yn gyntaf",
     "stillNeedHelp": "Dal angen cymorth?",
     "bookEngineer": "Archebu {trade}"
+  },
+  "footer": {
+    "mission": "Credwn y dylai pawb gael lle y maen nhw'n falch o'i alw'n gartref.",
+    "contactUs": "Cysylltu â ni",
+    "repairsLine": "Atgyweiriadau",
+    "outOfHours": "Y tu allan i oriau swyddfa, bydd galwadau'n mynd i'n gwasanaeth Y Tu Allan i Oriau.",
+    "usefulLinks": "Dolenni defnyddiol",
+    "repairsGuide": "Atgyweiriadau gyda Bron Afon",
+    "legal": "Mae Bron Afon Community Housing Limited yn gymdeithas gofrestredig (Rhif 30235R) ac yn Landlord Cymdeithasol Cofrestredig gyda Llywodraeth Cymru (Rhif L147). Prototeip cysyniadol at ddibenion arddangos."
+  },
+  "dampMould": {
+    "title": "Rhoi gwybod am leithder neu lwydni",
+    "intro": "Gall lleithder a llwydni effeithio ar eich iechyd. Dywedwch wrthym beth sy'n digwydd a byddwn yn dweud wrthych ar unwaith pryd y byddwn yn dod i archwilio.",
+    "back": "Yn ôl i roi gwybod am atgyweiriad",
+    "optional": "dewisol",
+    "errorPrefix": "Gwall:",
+    "errorSummary": "Mae problem",
+    "failed": "Mae'n ddrwg gennym, nid oedd modd anfon eich adroddiad ar hyn o bryd.",
+    "failedCall": "Rhowch gynnig arall arni, neu ffoniwch ni ar",
+    "submit": "Anfon adroddiad",
+    "submitting": "Yn anfon…",
+    "errors": {
+      "rooms": "Dewiswch o leiaf un ystafell",
+      "severity": "Dewiswch pa mor ddrwg yw'r lleithder neu'r llwydni",
+      "duration": "Dewiswch ers pryd rydych wedi sylwi arno",
+      "vulnerable": "Dewiswch ydy neu nac ydy",
+      "descriptionShort": "Disgrifiwch y broblem mewn o leiaf 10 nod",
+      "descriptionLong": "Rhaid i'r disgrifiad fod yn 2,000 nod neu lai"
+    },
+    "rooms": {
+      "legend": "Pa ystafelloedd sydd wedi'u heffeithio?",
+      "hint": "Dewiswch bob un sy'n berthnasol.",
+      "bedroom": "Ystafell wely",
+      "livingRoom": "Ystafell fyw",
+      "kitchen": "Cegin",
+      "bathroom": "Ystafell ymolchi",
+      "hallway": "Cyntedd neu risiau",
+      "other": "Rhywle arall"
+    },
+    "severity": {
+      "legend": "Pa mor ddrwg ydy e?",
+      "low": "Darn bach",
+      "lowHint": "Llai na phlât cinio, neu anwedd sy'n sychu i ffwrdd.",
+      "moderate": "Yn lledaenu",
+      "moderateHint": "Darnau mwy, yn dod yn ôl ar ôl glanhau, neu arogl mws.",
+      "severe": "Eang neu'n gwaethygu'n gyflym",
+      "severeHint": "Ardaloedd mawr, difrod i eiddo, waliau gwlyb, neu mae'n effeithio ar iechyd rhywun."
+    },
+    "duration": {
+      "legend": "Ers pryd rydych chi wedi sylwi arno?",
+      "underMonth": "Llai na mis",
+      "oneToThreeMonths": "1 i 3 mis",
+      "overThreeMonths": "Mwy na 3 mis"
+    },
+    "vulnerable": {
+      "legend": "Oes gan unrhyw un yn eich cartref risg uwch i'w iechyd?",
+      "hint": "Er enghraifft babi neu blentyn ifanc, rhywun dros 65 oed, rhywun beichiog, neu unrhyw un ag asthma, cyflwr ar yr ysgyfaint neu'r galon neu system imiwnedd wan.",
+      "yes": "Oes",
+      "no": "Nac oes"
+    },
+    "description": {
+      "label": "Dywedwch fwy wrthym",
+      "hint": "Ble mae e, sut mae'n edrych, ac a oes unrhyw beth wedi'i wella neu ei waethygu?"
+    },
+    "photo": {
+      "label": "Ychwanegu llun",
+      "hint": "Mae llun yn helpu ein syrfëwr i gynllunio'r driniaeth gywir.",
+      "button": "Tynnu neu ddewis llun",
+      "previewAlt": "Eich llun o'r lleithder neu'r llwydni"
+    },
+    "done": {
+      "title": "Adroddiad wedi dod i law",
+      "reference": "Eich cyfeirnod yw",
+      "emergencyTitle": "Rydym yn trin hyn fel argyfwng",
+      "emergencyBody": "Gan fod gan rywun yn eich cartref risg uwch i'w iechyd, byddwn yn cysylltu â chi heddiw ac yn gwneud eich cartref yn ddiogel o fewn 24 awr.",
+      "callNow": "Ffoniwch ni nawr ar {phone}",
+      "level": {
+        "emergency": "Argyfwng: byddwn gyda chi o fewn 24 awr",
+        "significant": "Blaenoriaeth: byddwn yn archwilio o fewn 10 diwrnod gwaith",
+        "routine": "Byddwn yn archwilio o fewn 20 diwrnod gwaith"
+      },
+      "inspectBy": "Byddwn yn archwilio eich cartref erbyn {date}.",
+      "nextTitle": "Beth sy'n digwydd nesaf",
+      "next1": "Byddwn yn anfon neges destun atoch i drefnu amser i syrfëwr ymweld.",
+      "next2": "O fewn 3 diwrnod gwaith i'r ymweliad byddwn yn ysgrifennu atoch gyda'r hyn a ganfuwyd a'r hyn y byddwn yn ei wneud.",
+      "next3": "Gallwch ddilyn y cynnydd yn Atgyweiriadau unrhyw bryd.",
+      "tipsTitle": "Tra byddwch yn aros",
+      "tip1": "Agorwch ffenestri neu defnyddiwch ffaniau echdynnu wrth goginio, cael cawod neu sychu dillad.",
+      "tip2": "Sychwch anwedd bob bore.",
+      "tip3": "Gadewch fwlch bach rhwng dodrefn a waliau allanol.",
+      "home": "Yn ôl i'r hafan"
+    }
   }
 }

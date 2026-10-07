@@ -1,63 +1,80 @@
 /*
  * Bron Afon Community Housing — Brand Theme
- * Inspired by bronafon.org.uk
+ * Tokens taken from bronafon.org.uk (WordPress colour presets + logo SVG).
  *
- * Brand identity:
- * - Primary: Deep forest green (Welsh heritage, community, trust)
- * - Secondary: Warm amber/gold (warmth, home, welcome)
- * - Supporting: Cream/off-white backgrounds, deep charcoal text
+ * - Green  #00A666 — logo / brand accent (primary-500)
+ * - Blue   #017CBC — logo / links (secondary-500)
+ * - Navy   #1E3249 — text, headings, footer
+ * - Stone  #EFEEE7 — page background
+ * - Grey   #727275 — logo wordmark
+ *
+ * Accessibility: brand green on white is only 3.2:1, so it is used for icons,
+ * large shapes and decoration. Text and filled buttons use primary-600 or darker
+ * (>= 5:1 on white and stone) to meet WCAG 2.2 AA.
  */
 
 @theme {
-  /* Bron Afon primary — Deep forest green */
-  --color-primary-50: #f0f9f2;
-  --color-primary-100: #dbefe0;
-  --color-primary-200: #b8dfc3;
-  --color-primary-300: #8bc69e;
-  --color-primary-400: #5ca776;
-  --color-primary-500: #3d8a57;
-  --color-primary-600: #2e6e43;
-  --color-primary-700: #255838;
-  --color-primary-800: #1f472e;
-  --color-primary-900: #183825;
-  --color-primary-950: #0d2317;
+  /* Primary — Bron Afon green */
+  --color-primary-50: #e6f7ef;
+  --color-primary-100: #c2ecd8;
+  --color-primary-200: #8fdcb8;
+  --color-primary-300: #52c78f;
+  --color-primary-400: #1fb574;
+  --color-primary-500: #00a666;
+  --color-primary-600: #00804f;
+  --color-primary-700: #006b43;
+  --color-primary-800: #005536;
+  --color-primary-900: #00452c;
+  --color-primary-950: #002a1b;
 
-  /* Bron Afon secondary — Warm amber */
-  --color-secondary-50: #fffaeb;
-  --color-secondary-100: #fef0c7;
-  --color-secondary-200: #fedf89;
-  --color-secondary-300: #fec84b;
-  --color-secondary-400: #fdb022;
-  --color-secondary-500: #f79009;
-  --color-secondary-600: #dc6803;
-  --color-secondary-700: #b54708;
-  --color-secondary-800: #93370d;
-  --color-secondary-900: #7a2e0e;
-  --color-secondary-950: #4e1d09;
+  /* Secondary — Bron Afon blue */
+  --color-secondary-50: #e6f3fa;
+  --color-secondary-100: #c3e2f3;
+  --color-secondary-200: #8cc8e8;
+  --color-secondary-300: #4ea9d9;
+  --color-secondary-400: #1f91cb;
+  --color-secondary-500: #017cbc;
+  --color-secondary-600: #016aa1;
+  --color-secondary-700: #015785;
+  --color-secondary-800: #03486c;
+  --color-secondary-900: #083c59;
+  --color-secondary-950: #06263a;
 
-  /* Background & neutral tones — warm cream */
-  --color-background: #fbfaf7;
-  --color-foreground: #1a2e22;
-  --color-muted: #eef2ec;
-  --color-muted-foreground: #5e6f64;
+  /* Navy — brand text colour */
+  --color-navy-50: #eef2f6;
+  --color-navy-100: #d6dee8;
+  --color-navy-700: #2a4462;
+  --color-navy-800: #233a54;
+  --color-navy-900: #1e3249;
+  --color-navy-950: #13202f;
+
+  /* Background & neutral tones — stone */
+  --color-background: #efeee7;
+  --color-foreground: #1e3249;
+  --color-muted: #e6e4da;
+  --color-muted-foreground: #5f5f62;
   --color-card: #ffffff;
-  --color-card-foreground: #1a2e22;
-  --color-border: #dde5df;
-  --color-input: #dde5df;
-  --color-ring: #2e6e43;
+  --color-card-foreground: #1e3249;
+  --color-border: #d9d6c9;
+  --color-input: #b9b6a8;
+  --color-ring: #017cbc;
 
   /* Semantic */
-  --color-destructive: #c83838;
+  --color-destructive: #b42318;
   --color-destructive-foreground: #ffffff;
-  --color-success: #3d8a57;
+  --color-success: #00804f;
   --color-success-foreground: #ffffff;
-  --color-warning: #dc6803;
+  --color-warning: #b54708;
   --color-warning-foreground: #ffffff;
 
-  /* Sidebar — warm off-white */
-  --color-sidebar: #f4f6f1;
-  --color-sidebar-foreground: #1a2e22;
-  --color-sidebar-accent: #e5ebe0;
-  --color-sidebar-accent-foreground: #1a2e22;
-  --color-sidebar-border: #dde5df;
+  /* Sidebar — white panel like the main site header */
+  --color-sidebar: #ffffff;
+  --color-sidebar-foreground: #1e3249;
+  --color-sidebar-accent: #e6f7ef;
+  --color-sidebar-accent-foreground: #006b43;
+  --color-sidebar-border: #e3e1d6;
+
+  /* Typography — Plus Jakarta Sans (as bronafon.org.uk); Nunito stands in for VAG Rounded */
+  --font-sans: var(--font-jakarta), 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-nunito), 'Nunito', var(--font-jakarta), ui-sans-serif, sans-serif;
 }

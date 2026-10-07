@@ -35,3 +35,39 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+  test:
+    name: Tests (unit + e2e + accessibility)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Unit tests
+        run: pnpm --filter @hafan/tenant test
+
+      - name: Build tenant app
+        run: pnpm --filter @hafan/tenant build
+
+      - name: Install Playwright browser
+        run: pnpm --filter @hafan/tenant-e2e exec playwright install --with-deps chromium
+
+      - name: End-to-end and accessibility tests
+        run: pnpm --filter @hafan/tenant-e2e test:e2e
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: apps/tenant-e2e/playwright-report
+          retention-days: 7

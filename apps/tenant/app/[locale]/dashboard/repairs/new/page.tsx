@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { ArrowLeft, CheckCircle2, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, Droplets, X } from 'lucide-react';
 import { Link } from '../../../../../i18n/navigation';
 import DiagnosticTool from './diagnostic-tool';
 
@@ -11,7 +11,6 @@ const CATEGORIES = [
   'Electrical',
   'Heating',
   'Windows & Doors',
-  'Damp & Mould',
   'Roof & Gutters',
   'Kitchen',
   'Bathroom',
@@ -54,7 +53,7 @@ export default function NewRepairPage() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Back to repairs
+          {t('backToRepairs')}
         </Link>
 
         <div className="rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-6 text-center">
@@ -96,12 +95,32 @@ export default function NewRepairPage() {
         className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-        Back to repairs
+        {t('backToRepairs')}
       </Link>
 
       <div>
         <h1 className="text-2xl font-bold text-foreground">{t('title')}</h1>
       </div>
+
+      {/* Damp & mould has its own dedicated form */}
+      <Link
+        href="/dashboard/repairs/damp-mould"
+        className="group flex items-center gap-4 rounded-2xl border-2 border-primary-500 bg-card p-4 transition-colors hover:bg-primary-50"
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-600">
+          <Droplets className="h-6 w-6" aria-hidden="true" />
+        </span>
+        <span className="flex-1">
+          <span className="block font-semibold text-foreground">{t('dampCallout')}</span>
+          <span className="block text-sm font-semibold text-primary-700 underline underline-offset-2">
+            {t('dampCalloutLink')}
+          </span>
+        </span>
+        <ArrowRight
+          className="h-5 w-5 text-primary-600 transition-transform group-hover:translate-x-1"
+          aria-hidden="true"
+        />
+      </Link>
 
       {/* AI Diagnostic Tool */}
       <DiagnosticTool />
@@ -112,7 +131,7 @@ export default function NewRepairPage() {
         </div>
         <div className="relative flex justify-center">
           <span className="bg-background px-3 text-sm text-muted-foreground">
-            or fill in the form below
+            {t('orFillIn')}
           </span>
         </div>
       </div>

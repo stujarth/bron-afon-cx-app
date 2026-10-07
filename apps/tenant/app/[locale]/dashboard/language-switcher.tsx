@@ -24,23 +24,29 @@ export function LanguageSwitcher() {
     >
       <button
         onClick={() => switchTo('en')}
-        className={`rounded-full px-3 py-1 transition-colors ${
+        aria-pressed={currentLocale === 'en'}
+        lang="en"
+        className={`min-h-9 rounded-full px-3 py-1 transition-colors ${
           currentLocale === 'en'
             ? 'bg-background text-foreground shadow-sm'
             : 'text-muted-foreground hover:text-foreground'
         }`}
       >
-        English
+        <span className="sm:hidden" aria-hidden="true">EN</span>
+        <span className="sr-only sm:not-sr-only">English</span>
       </button>
       <button
         onClick={() => switchTo('cy')}
-        className={`rounded-full px-3 py-1 transition-colors ${
+        aria-pressed={currentLocale === 'cy'}
+        lang="cy"
+        className={`min-h-9 rounded-full px-3 py-1 transition-colors ${
           currentLocale === 'cy'
             ? 'bg-background text-foreground shadow-sm'
             : 'text-muted-foreground hover:text-foreground'
         }`}
       >
-        Cymraeg
+        <span className="sm:hidden" aria-hidden="true">CY</span>
+        <span className="sr-only sm:not-sr-only">Cymraeg</span>
       </button>
     </div>
   );
